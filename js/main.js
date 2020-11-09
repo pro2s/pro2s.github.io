@@ -1,168 +1,74 @@
-(function($) {
-  
-  "use strict";
+const fadeOut = (el) => {
+  el.style.opacity = 1;
 
-  // Sticky Nav
-    $(window).on('scroll', function() {
-        if ($(window).scrollTop() > 200) {
-            $('.scrolling-navbar').addClass('top-nav-collapse');
-        } else {
-            $('.scrolling-navbar').removeClass('top-nav-collapse');
+  (function fade() {
+    if ((el.style.opacity -= .1) < 0) {
+      el.style.display = "none";
+    } else {
+      requestAnimationFrame(fade);
+    }
+  })();
+};
+
+const inView = (target, options, action) => {
+  const interSecObs = new IntersectionObserver(entries => {
+   entries.forEach(entry => {
+     action(entry);
+   });
+  }, options);
+  interSecObs.observe(target);
+};
+
+const nodeListToArray = (nodeList) => Array.prototype.slice.call(nodeList);
+const mapToAsocciatedObject = (nodeList, getter) => nodeListToArray(nodeList)
+  .reduce(
+    (acc, node) => {
+      if (node.id) {
+        const el = getter(node.id);
+        if (!el) {
+          return acc;
         }
-    });
 
-    /* 
-   One Page Navigation & wow js
-   ========================================================================== */
-    //Initiat WOW JS
-    new WOW().init();
-
-    // one page navigation 
-    $('.main-navigation').onePageNav({
-            currentClass: 'active'
-    }); 
-
-    $(window).on('load', function() {
-       
-        $('body').scrollspy({
-            target: '.navbar-collapse',
-            offset: 195
-        });
-
-        $(window).on('scroll', function() {
-            if ($(window).scrollTop() > 200) {
-                $('.fixed-top').addClass('menu-bg');
-            } else {
-                $('.fixed-top').removeClass('menu-bg');
-            }
-        });
-
-    });
-
-    // Slick Nav 
-    $('.mobile-menu').slicknav({
-      prependTo: '.navbar-header',
-      parentTag: 'span',
-      allowParentLinks: true,
-      duplicate: false,
-      label: '',
-    });
-
-
-/* 
-   CounterUp
-   ========================================================================== */
-    $('.counter').counterUp({
-      time: 1000
-    });
-
-/* 
-   MixitUp
-   ========================================================================== */
-  $('#portfolio').mixItUp();
-
-/* 
-   Touch Owl Carousel
-   ========================================================================== */
-    var owl = $(".touch-slider");
-    owl.owlCarousel({
-      navigation: false,
-      pagination: true,
-      slideSpeed: 1000,
-      stopOnHover: true,
-      autoPlay: true,
-      items: 2,
-      itemsDesktop : [1199,2],
-      itemsDesktopSmall: [1024, 2],
-      itemsTablet: [600, 1],
-      itemsMobile: [479, 1]
-    });
-
-    $('.touch-slider').find('.owl-prev').html('<i class="fa fa-chevron-left"></i>');
-    $('.touch-slider').find('.owl-next').html('<i class="fa fa-chevron-right"></i>');
-
-/* 
-   Sticky Nav
-   ========================================================================== */
-    $(window).on('scroll', function() {
-        if ($(window).scrollTop() > 200) {
-            $('.header-top-area').addClass('menu-bg');
-        } else {
-            $('.header-top-area').removeClass('menu-bg');
-        }
-    });
-
-/* 
-   VIDEO POP-UP
-   ========================================================================== */
-    $('.video-popup').magnificPopup({
-        disableOn: 700,
-        type: 'iframe',
-        mainClass: 'mfp-fade',
-        removalDelay: 160,
-        preloader: false,
-        fixedContentPos: false,
-    });
-
-
-  /* 
-   SMOOTH SCROLL
-   ========================================================================== */
-    var scrollAnimationTime = 1200,
-        scrollAnimation = 'easeInOutExpo';
-
-    $('a.scrollto').on('bind', 'click.smoothscroll', function (event) {
-        event.preventDefault();
-        var target = this.hash;
-        
-        $('html, body').stop().animate({
-            'scrollTop': $(target).offset().top
-        }, scrollAnimationTime, scrollAnimation, function () {
-            window.location.hash = target;
-        });
-    });
-
-/* 
-   Back Top Link
-   ========================================================================== */
-    var offset = 200;
-    var duration = 500;
-    $(window).scroll(function() {
-      if ($(this).scrollTop() > offset) {
-        $('.back-to-top').fadeIn(400);
-      } else {
-        $('.back-to-top').fadeOut(400);
+        acc[node.id] = el;
       }
+
+      return acc;
+    },
+    {}
+  );
+
+const isIntersecting = (flag, el, className) => flag
+  ? el.classList.add(className)
+  : el.classList.remove(className);
+
+const scrollSpy = () => {
+  const targets = document.querySelectorAll("header, .section"),
+    top = document.querySelector("#hero-area > div .contents"),
+    navBar = document.querySelector(".scrolling-navbar"),
+    links = mapToAsocciatedObject(targets, (id) => document.querySelector(
+      `#main-navbar a.nav-link[href='#${id}']`
+    ));
+
+  // check if IntersectionObserver is supported
+  if ("IntersectionObserver" in window) {
+    inView(top, {threshold: 1}, (entry) => {
+      isIntersecting(!entry.isIntersecting, navBar, "top-nav-collapse")
     });
 
-    $('.back-to-top').on('click',function(event) {
-      event.preventDefault();
-      $('html, body').animate({
-        scrollTop: 0
-      }, 600);
-      return false;
-    })
+    targets.forEach(target => {
+      inView(target, {rootMargin: "50px", threshold: 1}, entry => {
+        const currentNav = links[entry.target.id];
+        if (!currentNav) {
+          return;
+        }
+        isIntersecting(entry.isIntersecting, currentNav, "active");
+      });
+    });
+  }
+}
 
-/* Nivo Lightbox
-  ========================================================*/   
-   $('.lightbox').nivoLightbox({
-    effect: 'fadeScale',
-    keyboardNav: true,
-  });
-
-
-/* stellar js
-  ========================================================*/
-  $.stellar({
-    horizontalScrolling: true,
-    verticalOffset: 40,
-    responsive: true
-  });
-
-/* 
-   Page Loader
-   ========================================================================== */
-  $('#loader').fadeOut();
-
-}(jQuery));
-
+document.addEventListener("DOMContentLoaded", () => {
+  const loader = document.getElementById('loader');
+  scrollSpy();
+  fadeOut(loader);
+});
