@@ -6,17 +6,18 @@
   "author": "Sergey Protasov <s.protasov@itransition.com>",
   "license": "MIT",
   "scripts": {
-    "build": "parcel build index.html --no-source-maps",
+    "build": "parcel build index.html --no-source-maps --no-scope-hoist",
     "start": "parcel serve index.html",
     "clean": "rm -rf dist/"
   },
   "dependencies": {
-    "@parcel/transformer-css": "^2.0.0-alpha.3",
+    "sass": "^1.29.0",
+    "vue": "^3.0.2"
+  },
+  "devDependencies": {
     "@parcel/transformer-raw": "^2.0.0-alpha.3",
     "@parcel/transformer-sass": "^2.0.0-alpha.3",
     "@vue/compiler-sfc": "^3.0.2",
-    "parcel": "^2.0.0-beta.1",
-    "sass": "^1.29.0",
-    "vue": "^3.0.2"
+    "parcel": "^2.0.0-beta.1"
   }
 }

@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
   potfolio();
   scrollSpy();
   app.mount('#features');
+
   const loader = document.querySelector('#loader');
   fadeOut(loader);
 });
