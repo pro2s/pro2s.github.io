@@ -1,168 +1,67 @@
-(function($) {
-  
-  "use strict";
+import { fadeOut, countTo, mapToAsocciatedObject, toggleClass, setOpacity, inView } from './lib.js'
 
-  // Sticky Nav
-    $(window).on('scroll', function() {
-        if ($(window).scrollTop() > 200) {
-            $('.scrolling-navbar').addClass('top-nav-collapse');
-        } else {
-            $('.scrolling-navbar').removeClass('top-nav-collapse');
-        }
-    });
+const scrollSpy = () => {
+  if (!("IntersectionObserver" in window)) {
+    return;
+  }
 
-    /* 
-   One Page Navigation & wow js
-   ========================================================================== */
-    //Initiat WOW JS
-    new WOW().init();
+  const targets = document.querySelectorAll("header, .section"),
+    links = mapToAsocciatedObject(targets, id => document.querySelector(`#main-navbar a.nav-link[href='#${id}']`)),
+    top = document.querySelector("#hero-area > div .contents"),
+    navBar = document.querySelector(".scrolling-navbar"),
+    backToTop = document.querySelector(".back-to-top"),
+    counters = document.querySelectorAll('.counter');
 
-    // one page navigation 
-    $('.main-navigation').onePageNav({
-            currentClass: 'active'
-    }); 
+  counters.forEach(c => inView(c, { threshold: 1 }, entry => {
+    entry.isIntersecting && !entry.target.started && countTo(entry.target);
+  }));
 
-    $(window).on('load', function() {
-       
-        $('body').scrollspy({
-            target: '.navbar-collapse',
-            offset: 195
-        });
+  inView(top, { threshold: 1 }, (entry) => {
+    toggleClass(!entry.isIntersecting, navBar, "top-nav-collapse")
+    toggleClass(!entry.isIntersecting, backToTop, "opacity-on")
+  });
 
-        $(window).on('scroll', function() {
-            if ($(window).scrollTop() > 200) {
-                $('.fixed-top').addClass('menu-bg');
-            } else {
-                $('.fixed-top').removeClass('menu-bg');
-            }
-        });
-
-    });
-
-    // Slick Nav 
-    $('.mobile-menu').slicknav({
-      prependTo: '.navbar-header',
-      parentTag: 'span',
-      allowParentLinks: true,
-      duplicate: false,
-      label: '',
-    });
-
-
-/* 
-   CounterUp
-   ========================================================================== */
-    $('.counter').counterUp({
-      time: 1000
-    });
-
-/* 
-   MixitUp
-   ========================================================================== */
-  $('#portfolio').mixItUp();
-
-/* 
-   Touch Owl Carousel
-   ========================================================================== */
-    var owl = $(".touch-slider");
-    owl.owlCarousel({
-      navigation: false,
-      pagination: true,
-      slideSpeed: 1000,
-      stopOnHover: true,
-      autoPlay: true,
-      items: 2,
-      itemsDesktop : [1199,2],
-      itemsDesktopSmall: [1024, 2],
-      itemsTablet: [600, 1],
-      itemsMobile: [479, 1]
-    });
-
-    $('.touch-slider').find('.owl-prev').html('<i class="fa fa-chevron-left"></i>');
-    $('.touch-slider').find('.owl-next').html('<i class="fa fa-chevron-right"></i>');
-
-/* 
-   Sticky Nav
-   ========================================================================== */
-    $(window).on('scroll', function() {
-        if ($(window).scrollTop() > 200) {
-            $('.header-top-area').addClass('menu-bg');
-        } else {
-            $('.header-top-area').removeClass('menu-bg');
-        }
-    });
-
-/* 
-   VIDEO POP-UP
-   ========================================================================== */
-    $('.video-popup').magnificPopup({
-        disableOn: 700,
-        type: 'iframe',
-        mainClass: 'mfp-fade',
-        removalDelay: 160,
-        preloader: false,
-        fixedContentPos: false,
-    });
-
-
-  /* 
-   SMOOTH SCROLL
-   ========================================================================== */
-    var scrollAnimationTime = 1200,
-        scrollAnimation = 'easeInOutExpo';
-
-    $('a.scrollto').on('bind', 'click.smoothscroll', function (event) {
-        event.preventDefault();
-        var target = this.hash;
-        
-        $('html, body').stop().animate({
-            'scrollTop': $(target).offset().top
-        }, scrollAnimationTime, scrollAnimation, function () {
-            window.location.hash = target;
-        });
-    });
-
-/* 
-   Back Top Link
-   ========================================================================== */
-    var offset = 200;
-    var duration = 500;
-    $(window).scroll(function() {
-      if ($(this).scrollTop() > offset) {
-        $('.back-to-top').fadeIn(400);
-      } else {
-        $('.back-to-top').fadeOut(400);
+  targets.forEach(target => {
+    inView(target, { rootMargin: "50px", threshold: 1 }, entry => {
+      const currentNav = links[entry.target.id];
+      if (!currentNav) {
+        return;
       }
+      toggleClass(entry.isIntersecting, currentNav, "active");
     });
-
-    $('.back-to-top').on('click',function(event) {
-      event.preventDefault();
-      $('html, body').animate({
-        scrollTop: 0
-      }, 600);
-      return false;
-    })
-
-/* Nivo Lightbox
-  ========================================================*/   
-   $('.lightbox').nivoLightbox({
-    effect: 'fadeScale',
-    keyboardNav: true,
   });
+}
 
+const potfolio = () => {
+  const filters = document.querySelectorAll('#portfolios a.filter');
+  const all = "#portfolio > div";
 
-/* stellar js
-  ========================================================*/
-  $.stellar({
-    horizontalScrolling: true,
-    verticalOffset: 40,
-    responsive: true
-  });
+  document.querySelectorAll(all).forEach(c => c.addEventListener("transitionend", (event) => {
+    if (event.target.style.opacity === "0") {
+      event.target.hidden = true;
+    }
+  }));
 
-/* 
-   Page Loader
-   ========================================================================== */
-  $('#loader').fadeOut();
+  filters.forEach(f => f.addEventListener('click', event => {
+    const filterValue = event.target.getAttribute('data-filter');
+    filters.forEach(f => toggleClass(f.getAttribute('data-filter') === filterValue, f, 'active'));
+    if (filterValue === '*') {
+      return setOpacity(all, 1);
+    }
+    setOpacity(all + filterValue, 1);
+    setOpacity(all + `:not(${filterValue})`, 0);
+  }));
+}
 
-}(jQuery));
+const gallery = () => {
+  const gallery = new Flickity('.gallery', { autoPlay: true, groupCells: true, wrapAround: true });
+}
 
+document.addEventListener("DOMContentLoaded", () => {
+  gallery();
+  potfolio();
+  scrollSpy();
+
+  const loader = document.querySelector('#loader');
+  fadeOut(loader);
+});

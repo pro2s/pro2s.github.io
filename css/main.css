@@ -16,13 +16,13 @@
     -2.3 SOCIAL ICON
     -2.4 PRE LOADER
     -2.5 SCROLL TO UP
-  3. HERO AREA 
+  3. HERO AREA
   4. NAVBAR
   5. SERVICES SECTION
   6. FEATURES SECTION
   7. VIDEO PROMO SECTION
   8. PORTFOLIO SECTION
-  9. PRICING TABLE 
+  9. PRICING TABLE
   10. COUNTER SECTION
   11. TESTIMONIAL AREA
   12. TEAM SECTION
@@ -374,11 +374,11 @@ button:focus {
   }
 }
 
-/* ========================================================================== 
-  -2.5 Scroll To Up 
+/* ==========================================================================
+  -2.5 Scroll To Up
    ========================================================================== */
 .back-to-top {
-  display: none;
+  opacity: 0;
   position: fixed;
   bottom: 18px;
   right: 15px;
@@ -779,6 +779,7 @@ button:focus {
 /* ==========================================================================
   8. Portfolio Section
    ========================================================================== */
+
 #portfolios .mix {
   padding: 10px;
 }
@@ -787,8 +788,12 @@ button:focus {
   margin: 0px;
 }
 
-#portfolio .mix {
-  display: none;
+.animate-opacity, #portfolio .mix {
+  transition: opacity 0.3s linear;
+}
+
+.opacity-on {
+  opacity: 1 !important;
 }
 
 .controls {
@@ -969,6 +974,14 @@ button:focus {
 /* ==========================================================================
 11. Testimonial Section Style
  ========================================================================== */
+
+.flickity-prev-next-button.previous {
+  left: -40px !important;
+}
+.flickity-prev-next-button.next {
+  right: -40px !important;
+}
+
 #testimonial {
   background: url(../img/testimonial-bg.jpg) fixed no-repeat;
   background-size: cover;
@@ -979,6 +992,7 @@ button:focus {
 
 .testimonial-item {
   text-align: center;
+  width: 50%;
 }
 
 .testimonial-item img {
@@ -1102,7 +1116,7 @@ button:focus {
 }
 
 /* ==========================================================================
-  13. Blog 
+  13. Blog
    ========================================================================== */
 #blog .blog-item-wrapper {
   background: #fff;

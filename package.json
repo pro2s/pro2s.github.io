@@ -1,0 +1,17 @@
+{
+  "name": "pro2s-home",
+  "version": "1.0.0",
+  "description": "Pro2s Home Page",
+  "repository": "git@github.com:pro2s/pro2s.github.io.git",
+  "author": "Sergey Protasov <s.protasov@itransition.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "parcel build index.html --no-source-maps",
+    "start": "parcel serve index.html",
+    "clean": "rm -rf dist/"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.0-beta.1",
+    "vue": "^3.0.2"
+  }
+}
