@@ -1,4 +1,5 @@
 import { fadeOut, countTo, mapToAsocciatedObject, toggleClass, setOpacity, inView } from './lib.js'
+import { app } from './app.js'
 
 const scrollSpy = () => {
   if (!("IntersectionObserver" in window)) {
@@ -61,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
   gallery();
   potfolio();
   scrollSpy();
-
+  app.mount('#features');
   const loader = document.querySelector('#loader');
   fadeOut(loader);
 });

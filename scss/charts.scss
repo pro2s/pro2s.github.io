@@ -1,15 +1,21 @@
 $default: (
 	svgSize: 60px,
 	strokeWidth: 2px,
-	backgroundColor: #305556,
-	foregroundColor: #79be9b,
-	labelColor: #c6e8d7,
+	backgroundColor: #33b391,
+	foregroundColor: #61d2b4,
+	labelColor: #33b391,
 	labelFontSize: 1rem,
 	duration: 1s,
 	animationDelay: 1s
 );
 
 $configs: (
+	x95: map-merge($default, (percentage: 95)),
+	x90: map-merge($default, (percentage: 90)),
+	x85: map-merge($default, (percentage: 85)),
+	x80: map-merge($default, (percentage: 80)),
+	x75: map-merge($default, (percentage: 75)),
+	x70: map-merge($default, (percentage: 70)),
 	php: map-merge($default, (percentage: 95)),
 	js: map-merge($default, (percentage: 85)),
 	css: map-merge($default, (percentage: 75)),
@@ -54,16 +60,37 @@ figure.circle {
 				animation: #{$chart}-label map-get($param, duration) steps(map-get($param, percentage)) forwards;
 				animation-delay: map-get($param, animationDelay);
 			}
-		}
+    }
+
+    &:hover {
+      svg {
+        .circle-background {
+          fill: map-get($param, labelColor);
+        }
+        .circle-foreground {
+          stroke: #fff;
+        }
+        text {
+          fill: #fff;
+        }
+      }
+
+      figcaption {
+        color: #fff;
+      }
+    }
 
 		svg {
+
 			width: 100%;
 			height: 100%;
 			text {
 				fill: map-get($param, labelColor);
-				font-size: map-get($param, labelFontSize)*0.75
+        font-size: map-get($param, labelFontSize)*0.75;
+        transition: all 0.2s linear;
 			}
 			.circle-background {
+        transition: all 0.2s linear;
 				r: (map-get($param, svgSize) - map-get($param, strokeWidth))/2;
 				cx: 50%;
 				cy: 50%;
@@ -83,6 +110,8 @@ figure.circle {
 		}
 
 		figcaption {
+      transition: all 0.2s linear;
+      pointer-events: none;
 			display: inline-block;
 			width: 100%;
 			height: map-get($param, labelFontSize);
@@ -97,7 +126,8 @@ figure.circle {
 				display: inline-block;
 				content: $labelData;
 				white-space: pre;
-				font-size: map-get($param, labelFontSize);
+        font-size: map-get($param, labelFontSize);
+        font-weight: bold;
 				line-height: map-get($param, labelFontSize);
 			}
 		}
