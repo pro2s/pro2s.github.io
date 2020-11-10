@@ -10,7 +10,7 @@
     "start": "parcel serve index.html",
     "clean": "rm -rf dist/"
   },
-  "devDependencies": {
+  "dependencies": {
     "@parcel/transformer-css": "^2.0.0-alpha.3",
     "@parcel/transformer-raw": "^2.0.0-alpha.3",
     "@parcel/transformer-sass": "^2.0.0-alpha.3",
