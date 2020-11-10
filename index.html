@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/responsive.css">
+    <link rel="stylesheet" href="./scss/main.scss">
+    <link rel="stylesheet" href="./scss/responsive.scss">
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 
     <link rel="apple-touch-icon" sizes="57x57" href="./favicon/apple-icon-57x57.png">
@@ -114,9 +114,9 @@
         <div class="row justify-content-md-center">
           <div class="col-md-10">
             <div class="contents text-center">
-              <h1 class="wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0.3s">Pro2s - Web developer</h1>
-              <p class="lead  wow fadeIn" data-wow-duration="1000ms" data-wow-delay="400ms">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-              <a href="#" class="btn btn-common wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms">Download</a>
+              <h1 class="wow fadeInDown">Pro2s - Web developer</h1>
+              <p class="lead  wow fadeIn">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+              <a href="#" class="btn btn-common wow fadeInUp">Download</a>
             </div>
           </div>
         </div>
@@ -128,13 +128,13 @@
     <section id="services" class="section">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s">Our Services</h2>
-          <hr class="lines wow zoomIn" data-wow-delay="0.3s">
-          <p class="section-subtitle wow fadeIn" data-wow-duration="1000ms" data-wow-delay="0.3s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.</p>
+          <h2 class="section-title wow fadeIn">Our Services</h2>
+          <hr class="lines wow zoomIn">
+          <p class="section-subtitle wow fadeIn">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.</p>
         </div>
         <div class="row">
           <div class="col-md-4 col-sm-6">
-            <div class="item-boxes wow fadeInDown" data-wow-delay="0.2s">
+            <div class="item-boxes wow fadeInDown">
               <div class="icon">
                 <i class="lni lni-pencil"></i>
               </div>
@@ -143,7 +143,7 @@
             </div>
           </div>
           <div class="col-md-4 col-sm-6">
-            <div class="item-boxes wow fadeInDown" data-wow-delay="0.8s">
+            <div class="item-boxes wow fadeInDown">
               <div class="icon">
                 <i class="lni lni-code"></i>
               </div>
@@ -152,7 +152,7 @@
             </div>
           </div>
           <div class="col-md-4 col-sm-6">
-            <div class="item-boxes wow fadeInDown" data-wow-delay="1.2s">
+            <div class="item-boxes wow fadeInDown">
               <div class="icon">
                 <i class="lni lni-consulting"></i>
               </div>
@@ -214,6 +214,18 @@
                     </div>
                   </div>
               </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <figure class="chart-one animate">
+                    <svg role="img" xmlns="http://www.w3.org/2000/svg">
+                      <title>PHP</title>
+                      <circle class="circle-background"/>
+                      <circle class="circle-foreground"/>
+                    </svg>
+                    <figcaption>85% of PHP</figcaption>
+                  </figure>
+                </div>
+              </div>
             </div>
           </div>
           <div class="col-lg-4 col-xs-12">
@@ -260,8 +272,8 @@
             <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix development print">
               <div class="portfolio-item">
                 <div class="shot-item">
-                  <img src="img/portfolio/img1.jpg" alt="" />
-                  <a class="overlay lightbox" href="img/portfolio/img1.jpg">
+                  <img src="/img/portfolio/img1.jpg" alt="" />
+                  <a class="overlay lightbox" href="/img/portfolio/img1.jpg">
                     <i class="lni lni-eye item-icon"></i>
                   </a>
                 </div>
@@ -331,9 +343,9 @@
         <div class="row justify-content-center">
           <div class="col-lg-8">
               <div class="video-promo-content text-center">
-                <h2 class="wow zoomIn" data-wow-duration="1000ms" data-wow-delay="100ms">Watch Our Intro video</h2>
-                <p class="wow zoomIn" data-wow-duration="1000ms" data-wow-delay="100ms">Aliquam vestibulum cursus felis. In iaculis iaculis sapien ac condimentum. Vestibulum congue posuere lacus, id tincidunt nisi porta sit amet. Suspendisse et sapien varius, pellentesque dui non, semper orci.</p>
-                <a href="https://www.youtube.com/watch?v=IXoMDwh4Cq8" class="video-popup wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="0.3s"><i class="lni lni-play"></i></a>
+                <h2 class="wow zoomIn">Watch Our Intro video</h2>
+                <p class="wow zoomIn">Aliquam vestibulum cursus felis. In iaculis iaculis sapien ac condimentum. Vestibulum congue posuere lacus, id tincidunt nisi porta sit amet. Suspendisse et sapien varius, pellentesque dui non, semper orci.</p>
+                <a href="https://www.youtube.com/watch?v=IXoMDwh4Cq8" class="video-popup wow fadeInUp"><i class="lni lni-play"></i></a>
               </div>
           </div>
         </div>
