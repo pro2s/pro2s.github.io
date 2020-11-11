@@ -16,13 +16,7 @@ $configs: (
 	x80: map-merge($default, (percentage: 80)),
 	x75: map-merge($default, (percentage: 75)),
 	x70: map-merge($default, (percentage: 70)),
-	php: map-merge($default, (percentage: 95)),
-	js: map-merge($default, (percentage: 85)),
-	css: map-merge($default, (percentage: 75)),
-	html: map-merge($default, (percentage: 95)),
-	mysql: map-merge($default, (percentage: 75)),
 );
-
 
 /* ------- DO NOT EDIT BELOW --------- */
 $pi: 3.14;
@@ -30,15 +24,6 @@ $labelData: '';
 @for $i from 0 to 101 {
 	$labelData: $labelData + $i + '%' + '\a';
 }
-
-figure.circle {
-	display: inline-block;
-	margin-left: 20px;
-	&.first {
-		margin-left: 0;
-	}
-}
-
 
 @each $chart, $param in $configs {
 
@@ -60,7 +45,7 @@ figure.circle {
 				animation: #{$chart}-label map-get($param, duration) steps(map-get($param, percentage)) forwards;
 				animation-delay: map-get($param, animationDelay);
 			}
-    }
+  		}
 
     &:hover {
       svg {

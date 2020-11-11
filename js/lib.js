@@ -62,9 +62,7 @@ export const mapToAsocciatedObject = (nodeList, getter) => nodeListToArray(nodeL
       return acc;
   },{});
 
-export const toggleClass = (flag, el, className) => flag
-  ? el.classList.add(className)
-  : el.classList.remove(className);
+export const toggleClass = (flag, el, className) => el.classList.toggle(className, flag);
 
 export const setOpacity = (selector, opacity) => document.querySelectorAll(selector).forEach(el => {
   if (opacity === 1) {
