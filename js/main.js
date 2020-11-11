@@ -1,5 +1,9 @@
-import { fadeOut, countTo, mapToAsocciatedObject, toggleClass, setOpacity, inView } from './lib.js'
-import { app } from './app.js'
+import { fadeOut, mapToAsocciatedObject, toggleClass, setOpacity, inView } from './lib.js'
+import features from './features.js'
+import services from './services.js'
+import pricing from './pricing.js'
+import counters from './containers/counters.js'
+import backgrounds from './backgrounds.js'
 
 const scrollSpy = () => {
   if (!("IntersectionObserver" in window)) {
@@ -12,12 +16,7 @@ const scrollSpy = () => {
     navBar = document.querySelector(".scrolling-navbar"),
     backToTop = document.querySelector(".back-to-top"),
     navbarBrand = document.querySelector(".navbar-brand"),
-    navbarToggler = document.querySelector(".navbar-toggler"),
-    counters = document.querySelectorAll('.counter');
-
-  counters.forEach(c => inView(c, { threshold: 1 }, entry => {
-    entry.isIntersecting && !entry.target.started && countTo(entry.target);
-  }));
+    navbarToggler = document.querySelector(".navbar-toggler");
 
   inView(top, { threshold: 1 }, (entry) => {
     toggleClass(!entry.isIntersecting, navBar, "top-nav-collapse");
@@ -70,12 +69,18 @@ const navigation = () => {
   navbarToggler.addEventListener('click', () => isVisible() && toggleClass(undefined, mainNavbar, 'collapse'));
   navbarToggler.addEventListener('focusout', () => setTimeout(() => toggleClass(true, mainNavbar, 'collapse'), 50));
 }
+
 document.addEventListener("DOMContentLoaded", () => {
+  backgrounds('[data-paralax]')
   navigation();
   gallery();
   potfolio();
   scrollSpy();
-  app.mount('#features');
+
+  features.mount('#features');
+  services.mount('#services');
+  pricing.mount('#pricing');
+  counters.mount('#counters');
 
   const loader = document.querySelector('#loader');
   fadeOut(loader);

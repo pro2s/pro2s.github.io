@@ -37,7 +37,7 @@
   </head>
   <body>
     <!-- Header Section Start -->
-    <header id="hero-area" data-stellar-background-ratio="0.5">
+    <header id="hero-area" data-paralax="0.5">
       <!-- Navbar Start -->
       <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo">
         <div class="container">
@@ -115,7 +115,7 @@
             <div class="contents text-center">
               <h1 class="wow fadeInDown">Pro2s - Web developer</h1>
               <p class="lead  wow fadeIn">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-              <a href="#" class="btn btn-common wow fadeInUp">Download</a>
+              <a href="#" class="btn btn-common wow fadeInUp">Download CV</a>
             </div>
           </div>
         </div>
@@ -126,104 +126,50 @@
     <!-- Services Section Start -->
     <section id="services" class="section">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title wow fadeIn">Our Services</h2>
-          <hr class="lines wow zoomIn">
-          <p class="section-subtitle wow fadeIn">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.</p>
-        </div>
+        <section-header title="Our Services">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.
+        </section-header>
         <div class="row">
-          <div class="col-md-4 col-sm-6">
-            <div class="item-boxes wow fadeInDown">
-              <div class="icon">
-                <i class="lni lni-pencil"></i>
-              </div>
-              <h4>Content Writing</h4>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.</p>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="item-boxes wow fadeInDown">
-              <div class="icon">
-                <i class="lni lni-code"></i>
-              </div>
-              <h4>Web Development</h4>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.</p>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="item-boxes wow fadeInDown">
-              <div class="icon">
-                <i class="lni lni-consulting"></i>
-              </div>
-              <h4>Business Consultancy</h4>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.</p>
-            </div>
-          </div>
+          <service class="col-md-4 col-sm-6" title="Content Writing" icon="pencil">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.
+          </service>
+          <service class="col-md-4 col-sm-6" title="Web Development" icon="code">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.
+          </service>
+          <service class="col-md-4 col-sm-6" title="Business Consultancy" icon="consulting">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.
+          </service>
         </div>
       </div>
     </section>
     <!-- Services Section End -->
 
     <!-- Features Section Start -->
-    <section id="features" class="section" data-stellar-background-ratio="0.2">
+    <section id="features" class="section" data-paralax="0.2">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Some Features</h2>
-          <hr class="lines">
-          <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.</p>
-        </div>
+        <section-header title="Some Features">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos!<br>
+          Lorem ipsum dolor sit amet, consectetur.
+        </section-header>
         <div class="row">
           <div class="col-lg-8 col-md-12 col-xs-12">
             <div class="container">
               <div class="row">
-                 <div class="col-lg-6 col-sm-6 col-xs-12 box-item">
-                    <span class="icon">
-                      <i class="lni lni-rocket"></i>
-                    </span>
-                    <div class="text">
-                      <h4>Bootstrap 4 Based</h4>
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 col-sm-6 col-xs-12 box-item">
-                    <span class="icon">
-                      <i class="lni lni-laptop-phone"></i>
-                    </span>
-                    <div class="text">
-                      <h4>Fully Responsive</h4>
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 col-sm-6 col-xs-12 box-item">
-                    <span class="icon">
-                      <i class="lni lni-layers"></i>
-                    </span>
-                    <div class="text">
-                      <h4>Parallax Background</h4>
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 col-sm-6 col-xs-12 box-item">
-                    <span class="icon">
-                      <i class="lni lni-cog"></i>
-                    </span>
-                    <div class="text">
-                      <h4>Easy to Customize</h4>
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-                    </div>
-                  </div>
+                 <main-skill class="col-lg-6 col-sm-6 col-xs-12 box-item" icon="rocket" title="Bootstrap 4 Based">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                  </main-skill>
+                  <main-skill class="col-lg-6 col-sm-6 col-xs-12 box-item" icon="laptop-phone" title="Fully Responsive">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                  </main-skill>
+                  <main-skill class="col-lg-6 col-sm-6 col-xs-12 box-item" icon="layers" title="Parallax Background">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                  </main-skill>
+                  <main-skill class="col-lg-6 col-sm-6 col-xs-12 box-item" icon="cog" title="Easy to Customize">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                  </main-skill>
               </div>
               <div class="row">
-                <div class="col-md-12 box-item grid-wrapper">
-                  <skill-circle label="PHP" class="x95 first"></skill-circle>
-                  <skill-circle label="JS" class="x95"></skill-circle>
-                  <skill-circle label="HTML" class="x95"></skill-circle>
-                  <skill-circle label="CSS" class="x80"></skill-circle>
-                  <skill-circle label="React" class="x75"></skill-circle>
-                  <skill-circle label="Vue" class="x75"></skill-circle>
-                  <skill-circle label="MySQL" class="x80"></skill-circle>
-                  <skill-circle label="Docker" class="x80"></skill-circle>
-                </div>
+                <skill-list class="col-md-12 box-item grid-wrapper" :skills="skils"></skill-list>
               </div>
             </div>
           </div>
@@ -355,120 +301,26 @@
     <!-- Start Pricing Table Section -->
     <div id="pricing" class="section pricing-section">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Pricing Table</h2>
-          <hr class="lines">
-          <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.</p>
-        </div>
-
+        <section-header title="Pricing Table">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.
+        </section-header>
         <div class="row pricing-tables">
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="pricing-table">
-              <div class="pricing-details">
-                <h2>Free</h2>
-                <span>$00</span>
-                <ul>
-                  <li>Consectetur adipiscing</li>
-                  <li>Nunc luctus nulla et tellus</li>
-                  <li>Suspendisse quis metus</li>
-                  <li>Vestibul varius fermentum erat</li>
-                </ul>
-              </div>
-              <div class="plan-button">
-                <a href="#" class="btn btn-common">Get Plan</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="pricing-table">
-              <div class="pricing-details">
-                <h2>Popular</h2>
-                <span>$3.99</span>
-                <ul>
-                  <li>Consectetur adipiscing</li>
-                  <li>Nunc luctus nulla et tellus</li>
-                  <li>Suspendisse quis metus</li>
-                  <li>Vestibul varius fermentum erat</li>
-                </ul>
-              </div>
-              <div class="plan-button">
-                <a href="#" class="btn btn-common">Buy Now</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="pricing-table">
-              <div class="pricing-details">
-                <h2>Premium</h2>
-                <span>$9.50</span>
-                <ul>
-                  <li>Consectetur adipiscing</li>
-                  <li>Nunc luctus nulla et tellus</li>
-                  <li>Suspendisse quis metus</li>
-                  <li>Vestibul varius fermentum erat</li>
-                </ul>
-              </div>
-              <div class="plan-button">
-                <a href="#" class="btn btn-common">Buy Now</a>
-              </div>
-            </div>
-          </div>
-
+          <price class="col-md-4 col-sm-6 col-xs-12" title="Free" price="0.0" :options="options" action="Try Now"></price>
+          <price class="col-md-4 col-sm-6 col-xs-12" title="Popular" price="3.99" :options="options" action="Buy Now"></price>
+          <price class="col-md-4 col-sm-6 col-xs-12" title="Premium" price="9.50" :options="options" action="Buy Now"></price>
         </div>
       </div>
     </div>
     <!-- End Pricing Table Section -->
 
     <!-- Counter Section Start -->
-    <div class="counters section">
+    <div id="counters" class="counters section" data-paralax="0.5">
       <div class="container">
         <div class="row">
-          <div class="col-sm-6 col-md-3 col-lg-3">
-            <div class="facts-item">
-              <div class="icon">
-                <i class="lni lni-timer"></i>
-              </div>
-              <div class="fact-count">
-                <h3><span class="counter">1589</span></h3>
-                <h4>Working Hours</h4>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-3 col-lg-3">
-            <div class="facts-item">
-              <div class="icon">
-                <i class="lni lni-briefcase"></i>
-              </div>
-              <div class="fact-count">
-                <h3><span class="counter">699</span></h3>
-                <h4>Completed Projects</h4>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-3 col-lg-3">
-            <div class="facts-item">
-              <div class="icon">
-                <i class="lni lni-user"></i>
-              </div>
-              <div class="fact-count">
-                <h3><span class="counter">203</span></h3>
-                <h4>No. of Clients</h4>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-3 col-lg-3">
-            <div class="facts-item">
-              <div class="icon">
-                <i class="lni lni-heart"></i>
-              </div>
-              <div class="fact-count">
-                <h3><span class="counter">1689</span></h3>
-                <h4>Peoples Love</h4>
-              </div>
-            </div>
-          </div>
+          <counter class="col-sm-6 col-md-3 col-lg-3" icon="timer" target="1234">Working Hours</counter>
+          <counter class="col-sm-6 col-md-3 col-lg-3" icon="briefcase" target="321">Completed Projects</counter>
+          <counter class="col-sm-6 col-md-3 col-lg-3" icon="user" target="123">No. of Clients</counter>
+          <counter class="col-sm-6 col-md-3 col-lg-3" icon="heart" target="4321">Peoples Love</counter>
         </div>
       </div>
     </div>
@@ -557,7 +409,7 @@
     <!-- Team section End -->
 
     <!-- testimonial Section Start -->
-    <div id="testimonial" class="section" >
+    <div id="testimonial" class="section" data-paralax="0.15">
       <div class="container">
         <div class="row justify-content-md-center">
           <div class="col-md-12">
@@ -691,7 +543,7 @@
     <!-- blog Section End -->
 
     <!-- Contact Section Start -->
-    <section id="contact" class="section" data-stellar-background-ratio="-0.2">
+    <section id="contact" class="section" data-paralax="-0.2">
       <div class="contact-form">
         <div class="container">
           <div class="row">

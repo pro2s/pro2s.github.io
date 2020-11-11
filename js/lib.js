@@ -23,29 +23,6 @@ export const fadeIn = (el, display) => {
   })();
 };
 
-export const countTo = (el, duration = 10000) => {
-  el.started = true;
-
-  let start = null, step = null;
-  const to = parseInt(el.textContent, 10);
-  if (isNaN(to)) return;
-
-  el.textContent = 0;
-
-  (function count(timestamp) {
-    if (start) step = Math.trunc(to / (duration / (timestamp - start)));
-    if (!start) start = timestamp;
-    el.textContent = +el.textContent + (step || 1);
-
-    if (el.textContent < to) {
-      requestAnimationFrame(count);
-    } else {
-      el.textContent = to;
-    }
-  })();
-};
-
-
 export const nodeListToArray = (nodeList) => Array.prototype.slice.call(nodeList);
 
 export const mapToAsocciatedObject = (nodeList, getter) => nodeListToArray(nodeList)
