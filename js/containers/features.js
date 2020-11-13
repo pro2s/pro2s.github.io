@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
-import SkillList from './components/SkillList';
-import MainSkill from './components/MainSkill';
-import SectionHeader from './components/SectionHeader';
+import SkillList from '../components/SkillList';
+import MainSkill from '../components/MainSkill';
+import SectionHeader from '../components/SectionHeader';
 
 export default createApp({
   data: () => ({

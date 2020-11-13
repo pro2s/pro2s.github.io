@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
-import SectionHeader from './components/SectionHeader';
-import Price from './components/Price';
+import SectionHeader from '../components/SectionHeader';
+import Price from '../components/Price';
 
 export default createApp({
   data: () => ({

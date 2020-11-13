@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="keywords" content="Bootstrap, Parallax, Template, Registration, Landing">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="author" content="Grayrids">
+    <meta name="Description" content="Pro2s Home Page.">
+    <meta name="author" content="Pro2s">
     <title>Pro2s Home Page</title>
 
     <!-- Bootstrap CSS -->
@@ -141,45 +142,7 @@
         </div>
       </div>
     </section>
-
     <!-- Services Section End -->
-    <section id="progress" class="counters section" data-paralax="0.35">
-      <div class="container">
-        <section-header title="Languages"></section-header>
-        <div class="row">
-          <line-progress class="col-md-4 col-sm-6" levels="5" passed="3"
-            :labels="['A1','A2','B1','B2','C']">
-            English
-          </line-progress>
-          <line-progress class="col-md-4 col-sm-6" levels="5" passed="5">Russian</line-progress>
-          <line-progress class="col-md-4 col-sm-6" levels="5" passed="2">German</line-progress>
-          <line-progress class="col-md-4 col-sm-6" levels="5" passed="1">Polish</line-progress>
-        </div>
-      </div>
-    </section>
-
-    <section id="timeline" class="section">
-      <div class="container">
-        <section-header title="Our Timeline">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.
-        </section-header>
-        <div class="row">
-          <div class="col-md-8 offset-md-2">
-              <timeline class="timeline">
-                <timeline-point title="New Web Design" date="21 March, 2014">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....
-                </timeline-point>
-                <timeline-point title="21 000 Job Seekers" date="4 March, 2014">
-                  Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin...
-                </timeline-point>
-                <timeline-point title="Awesome Employers" date="1 April, 2014">
-                  Fusce ullamcorper ligula sit amet quam accumsan aliquet. Sed nulla odio, tincidunt vitae nunc vitae, mollis pharetra velit. Sed nec tempor nibh...
-                </timeline-point>
-              </timeline>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Features Section Start -->
     <section id="features" class="section" data-paralax="0.2">
@@ -218,6 +181,44 @@
         </div>
       </div>
     </section>
+
+    <section id="timeline" class="section">
+      <div class="container">
+        <section-header title="Our Timeline">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.
+        </section-header>
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+              <timeline class="timeline">
+                <timeline-point title="New Web Design" date="21 March, 2014">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....
+                </timeline-point>
+                <timeline-point title="21 000 Job Seekers" date="4 March, 2014">
+                  Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin...
+                </timeline-point>
+                <timeline-point title="Awesome Employers" date="1 April, 2014">
+                  Fusce ullamcorper ligula sit amet quam accumsan aliquet. Sed nulla odio, tincidunt vitae nunc vitae, mollis pharetra velit. Sed nec tempor nibh...
+                </timeline-point>
+              </timeline>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="progress" class="counters section" data-paralax="0.35">
+      <div class="container">
+        <section-header title="Languages"></section-header>
+        <div class="row">
+          <line-progress class="col-md-4 col-sm-6" levels="5" passed="3"
+            :labels="['A1','A2','B1','B2','C']">
+            English
+          </line-progress>
+          <line-progress class="col-md-4 col-sm-6" levels="5" passed="5">Russian</line-progress>
+          <line-progress class="col-md-4 col-sm-6" levels="5" passed="2">German</line-progress>
+          <line-progress class="col-md-4 col-sm-6" levels="5" passed="1">Polish</line-progress>
+        </div>
+      </div>
+    </section>
     <!-- Features Section End -->
 
     <!-- Portfolio Section -->
@@ -237,7 +238,7 @@
           <div id="portfolio" class="row">
             <transition-group name="works-list">
               <work class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix"
-                v-for="work in worksList" :key="work.id" :image="work.image">
+                v-for="work in worksList" :key="work.id" :image="work.image" :title="work.type">
               </work>
             </transition-group>
           </div>
@@ -391,19 +392,25 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required data-error="Please enter your name">
+                        <label>
+                          <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required data-error="Please enter your name">
+                        </label>
                         <div class="help-block with-errors"></div>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
-                        <input type="text" placeholder="Your Email" id="email" class="form-control" name="name" required data-error="Please enter your email">
+                        <label>
+                          <input type="text" placeholder="Your Email" id="email" class="form-control" name="name" required data-error="Please enter your email">
+                        </label>
                         <div class="help-block with-errors"></div>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
-                        <textarea class="form-control" id="message" placeholder="Your Message" rows="8" data-error="Write your message" required></textarea>
+                        <label>
+                          <textarea class="form-control" id="message" placeholder="Your Message" rows="8" data-error="Write your message" required></textarea>
+                        </label>
                         <div class="help-block with-errors"></div>
                       </div>
                       <div class="submit-button text-center">

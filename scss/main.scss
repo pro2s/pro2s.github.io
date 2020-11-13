@@ -1197,6 +1197,9 @@ button:focus {
   background: #343a40;
   color: #fff;
   position: relative;
+  label {
+    width: 100%;
+  }
 }
 .form-control {
   width: 100%;
