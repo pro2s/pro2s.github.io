@@ -15,7 +15,6 @@
 
     <link rel="stylesheet" href="./scss/main.scss">
     <link rel="stylesheet" href="./scss/responsive.scss">
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 
     <link rel="apple-touch-icon" sizes="57x57" href="./favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="./favicon/apple-icon-60x60.png">
@@ -142,7 +141,45 @@
         </div>
       </div>
     </section>
+
     <!-- Services Section End -->
+    <section id="progress" class="counters section" data-paralax="0.35">
+      <div class="container">
+        <section-header title="Languages"></section-header>
+        <div class="row">
+          <line-progress class="col-md-4 col-sm-6" levels="5" passed="3"
+            :labels="['A1','A2','B1','B2','C']">
+            English
+          </line-progress>
+          <line-progress class="col-md-4 col-sm-6" levels="5" passed="5">Russian</line-progress>
+          <line-progress class="col-md-4 col-sm-6" levels="5" passed="2">German</line-progress>
+          <line-progress class="col-md-4 col-sm-6" levels="5" passed="1">Polish</line-progress>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline" class="section">
+      <div class="container">
+        <section-header title="Our Timeline">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.
+        </section-header>
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+              <timeline class="timeline">
+                <timeline-point title="New Web Design" date="21 March, 2014">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....
+                </timeline-point>
+                <timeline-point title="21 000 Job Seekers" date="4 March, 2014">
+                  Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin...
+                </timeline-point>
+                <timeline-point title="Awesome Employers" date="1 April, 2014">
+                  Fusce ullamcorper ligula sit amet quam accumsan aliquet. Sed nulla odio, tincidunt vitae nunc vitae, mollis pharetra velit. Sed nec tempor nibh...
+                </timeline-point>
+              </timeline>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Features Section Start -->
     <section id="features" class="section" data-paralax="0.2">
@@ -185,100 +222,27 @@
 
     <!-- Portfolio Section -->
     <section id="portfolios" class="section">
-      <!-- Container Starts -->
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Our Portfolio</h2>
-          <hr class="lines">
-          <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.</p>
-        </div>
+        <section-header title="Our Portfolio">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.
+        </section-header>
         <div class="row">
           <div class="col-md-12">
-            <!-- Portfolio Controller/Buttons -->
             <div class="controls text-center">
-              <a class="filter active btn btn-common" data-filter="*">
-                All
-              </a>
-              <a class="filter btn btn-common" data-filter=".design">
-                Design
-              </a>
-              <a class="filter btn btn-common" data-filter=".development">
-                Development
-              </a>
-              <a class="filter btn btn-common" data-filter=".print">
-                Print
+              <a v-for="f in filters" :key="f.id" :class="{active: filter == f.id}" class="btn btn-common" @click="setFilter(f.id)">
+                {{ f.name }}
               </a>
             </div>
-            <!-- Portfolio Controller/Buttons Ends-->
           </div>
-
-          <!-- Portfolio Recent Projects -->
           <div id="portfolio" class="row">
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix development print">
-              <div class="portfolio-item">
-                <div class="shot-item">
-                  <img src="/img/portfolio/img1.jpg" alt="" />
-                  <a class="overlay lightbox" href="/img/portfolio/img1.jpg">
-                    <i class="lni lni-eye item-icon"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix design print">
-              <div class="portfolio-item">
-                <div class="shot-item">
-                  <img src="img/portfolio/img2.jpg" alt="" />
-                  <a class="overlay lightbox" href="img/portfolio/img2.jpg">
-                    <i class="lni lni-eye item-icon"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix development">
-              <div class="portfolio-item">
-                <div class="shot-item">
-                  <img src="img/portfolio/img3.jpg" alt="" />
-                  <a class="overlay lightbox" href="img/portfolio/img3.jpg">
-                    <i class="lni lni-eye item-icon"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix development design">
-              <div class="portfolio-item">
-                <div class="shot-item">
-                  <img src="img/portfolio/img4.jpg" alt="" />
-                  <a class="overlay lightbox" href="img/portfolio/img4.jpg">
-                    <i class="lni lni-eye item-icon"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix development">
-              <div class="portfolio-item">
-                <div class="shot-item">
-                  <img src="img/portfolio/img5.jpg" alt="" />
-                  <a class="overlay lightbox" href="img/portfolio/img5.jpg">
-                    <i class="lni lni-eye item-icon"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix print design">
-              <div class="portfolio-item">
-                <div class="shot-item">
-                  <img src="img/portfolio/img6.jpg" alt="" />
-                  <a class="overlay lightbox" href="img/portfolio/img6.jpg">
-                    <i class="lni lni-eye item-icon"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="grid-sizer col-1"></div>
-            </div>
+            <transition-group name="works-list">
+              <work class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix"
+                v-for="work in worksList" :key="work.id" :image="work.image">
+              </work>
+            </transition-group>
           </div>
         </div>
       </div>
-      <!-- Container Ends -->
     </section>
     <!-- Portfolio Section Ends -->
 
@@ -329,80 +293,22 @@
     <!-- Team section Start -->
     <section id="team" class="section">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Our Team</h2>
-          <hr class="lines">
-          <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.</p>
-        </div>
+        <section-header title="Our Team">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.
+        </section-header>
         <div class="row">
-          <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="single-team">
-              <img src="img/team/team1.jpg" alt="">
-              <div class="team-details">
-                <div class="team-inner">
-                  <h4 class="team-title">Jhon Doe</h4>
-                  <p>Chief Technical Officer</p>
-                  <ul class="social-list">
-                    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="single-team">
-              <img src="img/team/team2.jpg" alt="">
-              <div class="team-details">
-                <div class="team-inner">
-                  <h4 class="team-title">Paul Kowalsy</h4>
-                  <p>CEO & Co-Founder</p>
-                  <ul class="social-list">
-                    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="single-team">
-              <img src="img/team/team3.jpg" alt="">
-              <div class="team-details">
-                <div class="team-inner">
-                  <h4 class="team-title">Emilly Williams</h4>
-                  <p>Business Manager</p>
-                  <ul class="social-list">
-                    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="single-team">
-              <img class="img-fulid" src="img/team/team4.jpg" alt="">
-              <div class="team-details">
-                <div class="team-inner">
-                  <h4 class="team-title">Patricia Green</h4>
-                  <p>Graphic Designer</p>
-                  <ul class="social-list">
-                    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+          <member class="col-lg-3 col-md-6 col-xs-12" :photo="photo.team1" name="Jhon Doe" :socials="socials">
+            Chief Technical Officer
+          </member>
+          <member class="col-lg-3 col-md-6 col-xs-12" :photo="photo.team2" name="Paul Kowalsy" :socials="socials">
+            CEO & Co-Founder
+          </member>
+          <member class="col-lg-3 col-md-6 col-xs-12" :photo="photo.team3" name="Emilly Williams" :socials="socials">
+            Business Manager
+          </member>
+          <member class="col-lg-3 col-md-6 col-xs-12" :photo="photo.team4" name="Patricia Green" :socials="socials">
+            Graphic Designer
+          </member>
         </div>
       </div>
     </section>
@@ -413,40 +319,20 @@
       <div class="container">
         <div class="row justify-content-md-center">
           <div class="col-md-12">
-            <div class="touch-slider gallery">
-              <div class="testimonial-item">
-                <img src="img/testimonial/customer1.jpg" alt="Client Testimonoal" />
-                <div class="testimonial-text">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. send do <br> adipisicing ciusmod tempor incididunt ut labore et</p>
-                  <h3>Jone Deam</h3>
-                  <span>Fondor of Jalmori</span>
-                </div>
-              </div>
-              <div class="testimonial-item">
-                <img src="img/testimonial/customer2.jpg" alt="Client Testimonoal" />
-                <div class="testimonial-text">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. send do <br> adipisicing ciusmod tempor incididunt ut labore et</p>
-                  <h3>Oidila Matik</h3>
-                  <span>President Lexo Inc</span>
-                </div>
-              </div>
-              <div class="testimonial-item">
-                <img src="img/testimonial/customer3.jpg" alt="Client Testimonoal" />
-                <div class="testimonial-text">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. send do <br> adipisicing ciusmod tempor incididunt ut labore et</p>
-                  <h3>Alex Dattilo</h3>
-                  <span>CEO Optima Inc</span>
-                </div>
-              </div>
-              <div class="testimonial-item">
-                <img src="img/testimonial/customer4.jpg" alt="Client Testimonoal" />
-                <div class="testimonial-text">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. send do <br> adipisicing ciusmod tempor incididunt ut labore et</p>
-                  <h3>Paul Kowalsy</h3>
-                  <span>CEO & Founder</span>
-                </div>
-              </div>
-            </div>
+            <gallery class="touch-slider" :options="options">
+              <testimonial title="Founder of Jalmori" name="Jone Deam" :image="photos.customer1">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. send do <br> adipisicing ciusmod tempor incididunt ut labore et
+              </testimonial>
+              <testimonial title="President Lexo Inc" name="Oidila Matik" :image="photos.customer2">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. send do <br> adipisicing ciusmod tempor incididunt ut labore et
+              </testimonial>
+              <testimonial title="CEO Optima Inc" name="Alex Dattilo" :image="photos.customer3">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. send do <br> adipisicing ciusmod tempor incididunt ut labore et
+              </testimonial>
+              <testimonial title="CEO & Founder" name="Paul Kowalsy" :image="photos.customer4">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. send do <br> adipisicing ciusmod tempor incididunt ut labore et
+              </testimonial>
+            </gallery>
           </div>
         </div>
       </div>
@@ -463,80 +349,15 @@
           <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.</p>
         </div>
         <div class="row">
-          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-item">
-            <!-- Blog Item Starts -->
-            <div class="blog-item-wrapper">
-              <div class="blog-item-img">
-                <a href="#">
-                  <img src="img/blog/img1.jpg" alt="">
-                </a>
-              </div>
-              <div class="blog-item-text">
-                <div class="meta-tags">
-                  <span class="date"><i class="lni  lni-clock"></i>2 Days Ago</span>
-                  <span class="comments"><a href="#"><i class="lni lni-bubble"></i> 24 Comments</a></span>
-                </div>
-                <h3>
-                  <a href="#">How often should you tweet?</a>
-                </h3>
-                <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
-                </p>
-                <a href="#" class="btn-rm">Read More <i class="lni lni-arrow-right"></i></a>
-              </div>
-            </div>
-            <!-- Blog Item Wrapper Ends-->
-          </div>
-
-          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-item">
-            <!-- Blog Item Starts -->
-            <div class="blog-item-wrapper">
-              <div class="blog-item-img">
-                <a href="#">
-                  <img src="img/blog/img2.jpg" alt="">
-                </a>
-              </div>
-              <div class="blog-item-text">
-                <div class="meta-tags">
-                  <span class="date"><i class="lni  lni-clock"></i>2 Days Ago</span>
-                  <span class="comments"><a href="#"><i class="lni lni-bubble"></i> 24 Comments</a></span>
-                </div>
-                <h3>
-                  <a href="#">Content is still king</a>
-                </h3>
-                <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
-                </p>
-                <a href="#" class="btn-rm">Read More <i class="lni lni-arrow-right"></i></a>
-              </div>
-            </div>
-            <!-- Blog Item Wrapper Ends-->
-          </div>
-
-          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-item">
-            <!-- Blog Item Starts -->
-            <div class="blog-item-wrapper">
-              <div class="blog-item-img">
-                <a href="#">
-                  <img src="img/blog/img3.jpg" alt="">
-                </a>
-              </div>
-              <div class="blog-item-text">
-                <div class="meta-tags">
-                  <span class="date"><i class="lni  lni-clock"></i>2 Days Ago</span>
-                  <span class="comments"><a href="#"><i class="lni lni-bubble"></i> 24 Comments</a></span>
-                </div>
-                <h3>
-                  <a href="#">Social media at work</a>
-                </h3>
-                <p>
-                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
-                </p>
-                <a href="#" class="btn-rm">Read More <i class="lni lni-arrow-right"></i></a>
-              </div>
-            </div>
-            <!-- Blog Item Wrapper Ends-->
-          </div>
+          <post class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-item" title="How often should you tweet?" :image="images.blog1" days="2" comments="24">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
+          </post>
+          <post class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-item" title="Content is still king" :image="images.blog2" days="3" comments="14">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
+          </post>
+          <post class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-item" title="Social media at work" :image="images.blog3" days="7" comments="42">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
+          </post>
         </div>
       </div>
     </section>
@@ -644,7 +465,6 @@
       </div>
     </div>
 
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <script src="https://use.fontawesome.com/902da43beb.js"></script>
     <script type="module" src="./js/main.js"></script>
   </body>

@@ -1,56 +1,102 @@
 $default: (
-	svgSize: 60px,
-	strokeWidth: 2px,
-	backgroundColor: #33b391,
-	foregroundColor: #61d2b4,
-	labelColor: #33b391,
-	labelFontSize: 1rem,
-	duration: 1s,
-	animationDelay: 1s
+  svgSize: 60px,
+  strokeWidth: 2px,
+  labelFontSize: 1rem,
+  duration: 1s,
+  animationDelay: 1s
 );
 
 $configs: (
-	x95: map-merge($default, (percentage: 95)),
-	x90: map-merge($default, (percentage: 90)),
-	x85: map-merge($default, (percentage: 85)),
-	x80: map-merge($default, (percentage: 80)),
-	x75: map-merge($default, (percentage: 75)),
-	x70: map-merge($default, (percentage: 70)),
+  x95: map-merge($default, (percentage: 95)),
+  x90: map-merge($default, (percentage: 90)),
+  x85: map-merge($default, (percentage: 85)),
+  x80: map-merge($default, (percentage: 80)),
+  x75: map-merge($default, (percentage: 75)),
+  x70: map-merge($default, (percentage: 70)),
 );
 
 /* ------- DO NOT EDIT BELOW --------- */
 $pi: 3.14;
 $labelData: '';
 @for $i from 0 to 101 {
-	$labelData: $labelData + $i + '%' + '\a';
+  $labelData: $labelData + $i + '%' + '\a';
+}
+
+@mixin circle-color($name, $label, $foreground, $background) {
+  .circle {
+    &.#{$name} {
+      svg {
+        text {
+          fill: $label;
+        }
+        .circle-background {
+          stroke: $background;
+        }
+        .circle-foreground {
+          @extend .circle-background;
+          stroke: $foreground;
+        }
+      }
+      &:hover {
+        svg {
+          .circle-background {
+            fill: $label !important;
+          }
+        }
+      }
+      figcaption {
+        color: $label;
+      }
+    }
+  }
+}
+
+@mixin circle-hover($label, $foreground, $background) {
+  .circle {
+    &:hover {
+      svg {
+        .circle-background {
+          fill: $background;
+        }
+        .circle-foreground {
+          stroke: $foreground;
+        }
+        text {
+          fill: $label;
+        }
+      }
+      figcaption {
+        color: $label;
+      }
+    }
+  }
 }
 
 @each $chart, $param in $configs {
+  $c: (map-get($param, svgSize) - map-get($param, strokeWidth)) * $pi;
+  $cOffSet: (map-get($param, percentage)/100)*$c;
 
-	$c: (map-get($param, svgSize) - map-get($param, strokeWidth)) * $pi;
-	$cOffSet: (map-get($param, percentage)/100)*$c;
+  .#{$chart} {
+    width: map-get($param, svgSize);
+    height: map-get($param, svgSize);
+    margin: 0;
+    position: relative;
 
-	.#{$chart} {
-		width: map-get($param, svgSize);
-		height: map-get($param, svgSize);
-		margin: 0;
-		position: relative;
-
-		&.animate {
-			svg .circle-foreground {
-				animation: offset map-get($param, duration) ease-in-out forwards;
-				animation-delay: map-get($param, animationDelay);
-			}
-			figcaption:after {
-				animation: #{$chart}-label map-get($param, duration) steps(map-get($param, percentage)) forwards;
-				animation-delay: map-get($param, animationDelay);
-			}
-  		}
+    &.animate {
+      svg .circle-foreground {
+        animation: offset map-get($param, duration) ease-in-out forwards;
+        animation-delay: map-get($param, animationDelay);
+      }
+      figcaption:after {
+        animation: #{$chart}-label map-get($param, duration) steps(map-get($param, percentage)) forwards;
+        animation-delay: map-get($param, animationDelay);
+      }
+    }
 
     &:hover {
       svg {
         .circle-background {
-          fill: map-get($param, labelColor);
+          fill: gray;
         }
         .circle-foreground {
           stroke: #fff;
@@ -59,73 +105,72 @@ $labelData: '';
           fill: #fff;
         }
       }
-
       figcaption {
         color: #fff;
       }
     }
 
-		svg {
-
-			width: 100%;
-			height: 100%;
-			text {
-				fill: map-get($param, labelColor);
+    svg {
+      width: 100%;
+      height: 100%;
+      text {
+        fill: gray;
         font-size: map-get($param, labelFontSize)*0.75;
         transition: all 0.2s linear;
-			}
-			.circle-background {
+      }
+      .circle-background {
         transition: all 0.2s linear;
-				r: (map-get($param, svgSize) - map-get($param, strokeWidth))/2;
-				cx: 50%;
-				cy: 50%;
-				fill: none;
-				stroke: map-get($param, backgroundColor);
-				stroke-width: map-get($param, strokeWidth);
-			}
-			.circle-foreground {
-				@extend .circle-background;
-				stroke: map-get($param, foregroundColor);
-				stroke-dasharray: $cOffSet $c;
-				stroke-dashoffset: $cOffSet;
-				stroke-linecap: round;
-				transform-origin: 50% 50%;
-				transform: rotate(-90deg);
-			}
-		}
+        r: (map-get($param, svgSize) - map-get($param, strokeWidth))/2;
+        cx: 50%;
+        cy: 50%;
+        fill: none;
+        stroke: darkgrey;
+        stroke-width: map-get($param, strokeWidth);
+      }
+      .circle-foreground {
+        @extend .circle-background;
+        stroke: lightgrey;
+        stroke-dasharray: $cOffSet $c;
+        stroke-dashoffset: $cOffSet;
+        stroke-linecap: round;
+        transform-origin: 50% 50%;
+        transform: rotate(-90deg);
+      }
+    }
 
-		figcaption {
+    figcaption {
       transition: all 0.2s linear;
       pointer-events: none;
-			display: inline-block;
-			width: 100%;
-			height: map-get($param, labelFontSize);
-			overflow: hidden;
-			text-align: center;
-			color: map-get($param, labelColor);
-			position: absolute;
-			top: calc(40% - #{map-get($param, labelFontSize)/2});
-			left: 0;
-			font-size: 0;
-			&:after {
-				display: inline-block;
-				content: $labelData;
-				white-space: pre;
+      display: inline-block;
+      width: 100%;
+      height: map-get($param, labelFontSize);
+      overflow: hidden;
+      text-align: center;
+      color: gray;
+      position: absolute;
+      top: calc(40% - #{map-get($param, labelFontSize)/2});
+      left: 0;
+      font-size: 0;
+      &:after {
+        display: inline-block;
+        content: $labelData;
+        white-space: pre;
         font-size: map-get($param, labelFontSize);
         font-weight: bold;
-				line-height: map-get($param, labelFontSize);
-			}
-		}
-	}
-	@keyframes #{$chart}-label {
-		100% {
-			transform: translateY(map-get($param, labelFontSize) * (-(map-get($param, percentage))));
-		}
-	}
+        line-height: map-get($param, labelFontSize);
+      }
+    }
+  }
+  @keyframes #{$chart}-label {
+    100% {
+      transform: translateY(map-get($param, labelFontSize) * (-(map-get($param, percentage))));
+    }
+  }
 }
+
 @keyframes offset {
-	100% {
-		stroke-dashoffset: 0;
-	}
+  100% {
+    stroke-dashoffset: 0;
+  }
 }
 

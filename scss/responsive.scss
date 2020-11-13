@@ -40,6 +40,19 @@
 
 /* mobile or only mobile */
 @media (max-width: 767px) {
+  .testimonial-item { width: 100%; }
+  .flickity-prev-next-button {
+    &.previous {
+      left: 0px !important;
+      top: unset;
+    }
+    &.next {
+      right: 0px !important;
+      top: unset;
+    }
+    bottom: -60px !important;
+    z-index: 100;
+  }
   .section-header .section-title {
     font-size: 20px;
   }
@@ -51,9 +64,7 @@
     line-height: 30px;
   }
   .grid-wrapper {
-    display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-row-gap: 20px;
   }
   #features .show-box img {
     display: none;

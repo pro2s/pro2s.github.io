@@ -20,8 +20,7 @@ module.exports = {
   props: ["icon", "target"],
   data: () => ({
     duration: 1000,
-    started: false,
-    step: null,
+    started: undefined,
     counter: 0,
   }),
   components: {
@@ -32,17 +31,12 @@ module.exports = {
   },
   methods: {
     count(timestamp) {
-      if (this.step === null && this.started !== false) {
-        this.step = Math.trunc(
-          +this.target / (this.duration / (timestamp - this.started))
-        );
-      }
-
-      if (timestamp && this.started === false) {
+      if (!this.started) {
         this.started = timestamp;
       }
 
-      this.counter += this.step || 1;
+      const progress = (timestamp - this.started) / this.duration;
+      this.counter = Math.trunc(this.target * progress);
 
       if (this.counter < this.target) {
         requestAnimationFrame(this.count);
@@ -51,12 +45,13 @@ module.exports = {
       }
     },
     startCount(viewed) {
-      if (viewed && this.started === false) {
-        const to = parseInt(this.target, 10);
+      if (!viewed || this.started) {
+        return;
+      }
 
-        if (isNaN(to)) return;
-
-        this.count();
+      const to = parseInt(this.target, 10);
+      if (!isNaN(to)) {
+        requestAnimationFrame(this.count);
       }
     },
   },

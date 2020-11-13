@@ -1,8 +1,14 @@
-import { fadeOut, mapToAsocciatedObject, toggleClass, setOpacity, inView } from './lib.js'
+import { fadeOut, mapToAsocciatedObject, toggleClass, inView } from './lib.js'
 import features from './features.js'
 import services from './services.js'
 import pricing from './pricing.js'
 import counters from './containers/counters.js'
+import team from './containers/team.js'
+import blog from './containers/blog.js'
+import testimonial from './containers/testimonial.js'
+import portfolio from './containers/portfolio.js'
+import progress from './containers/progress.js'
+import timeline from './containers/timeline.js'
 import backgrounds from './backgrounds.js'
 
 const scrollSpy = () => {
@@ -36,31 +42,6 @@ const scrollSpy = () => {
   });
 }
 
-const potfolio = () => {
-  const filters = document.querySelectorAll('#portfolios a.filter');
-  const all = "#portfolio > div";
-
-  document.querySelectorAll(all).forEach(c => c.addEventListener("transitionend", (event) => {
-    if (event.target.style.opacity === "0") {
-      event.target.hidden = true;
-    }
-  }));
-
-  filters.forEach(f => f.addEventListener('click', event => {
-    const filterValue = event.target.getAttribute('data-filter');
-    filters.forEach(f => toggleClass(f.getAttribute('data-filter') === filterValue, f, 'active'));
-    if (filterValue === '*') {
-      return setOpacity(all, 1);
-    }
-    setOpacity(all + filterValue, 1);
-    setOpacity(all + `:not(${filterValue})`, 0);
-  }));
-}
-
-const gallery = () => {
-  const gallery = new Flickity('.gallery', { autoPlay: true, groupCells: true, wrapAround: true });
-}
-
 const navigation = () => {
   const mainNavbar = document.querySelector('#main-navbar'),
     navbarToggler = document.querySelector(".navbar-toggler"),
@@ -73,14 +54,18 @@ const navigation = () => {
 document.addEventListener("DOMContentLoaded", () => {
   backgrounds('[data-paralax]')
   navigation();
-  gallery();
-  potfolio();
   scrollSpy();
 
   features.mount('#features');
   services.mount('#services');
   pricing.mount('#pricing');
   counters.mount('#counters');
+  team.mount('#team');
+  blog.mount('#blog');
+  testimonial.mount('#testimonial');
+  portfolio.mount("#portfolios");
+  progress.mount("#progress");
+  timeline.mount("#timeline");
 
   const loader = document.querySelector('#loader');
   fadeOut(loader);

@@ -7,6 +7,7 @@ $letter-spacing: 0px;
 
 // Green
 $green: #61d2b4;
+$white: #fff;
 $green-drack: #33b391;
 
 //Current Preset Declareation
@@ -15,6 +16,76 @@ $preset-drack: $green-drack;
 
 @import "./charts.scss";
 
+@include circle-color("green", #33b391, #61d2b4, #33b391);
+@include circle-color("yellow", #b3a633, #d2d061, #b1b333);
+@include circle-color("red", #e7a7a7, #b14c4c, #b33333);
+@include circle-color("blue",  #a19ff1, #6c61d2, #4b40e2);
+@include circle-hover(#fff, #fff, gray);
+
+@import "flickity/css/flickity.css";
+
+#timeline {
+  .timeline {
+    &:before {
+      background: $green;
+    }
+    &:after {
+      background: $green-drack;
+    }
+
+    > li {
+      &:hover {
+        &:before {
+          background: $green;
+        }
+      }
+      &:before {
+        background: $white;
+        border: 3px solid $green-drack;
+      }
+    }
+  }
+}
+
+#progress {
+  .section-title {
+    color: #fff;
+  }
+
+  h4 {
+    color: $white;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    line-height: 22px;
+  }
+
+  ul.line-progress {
+
+    > li {
+      color: $green;
+
+      &:hover {
+        &:before {
+          background: $green-drack !important;
+        }
+      }
+
+      &.pass:before {
+        background-color: $green;
+      }
+
+      &:before {
+        background: $white;
+        border: 3px solid $green-drack;
+      }
+    }
+
+    &:before {
+      background: $green;
+    }
+  }
+}
 
 /*
 * Mate - Bootstrap 4 Template
@@ -250,10 +321,18 @@ button:focus {
 }
 .facebook a {
   color: #4867aa;
+  &:hover {
+    background: #4867aa;
+  }
 }
-.facebook a:hover {
-  background: #4867aa;
+
+.instagram a {
+  color: #df2926;
+  &:hover {
+    background: #df2926;
+  }
 }
+
 .twitter a {
   color: #1da1f2;
 }
@@ -416,7 +495,6 @@ button:focus {
       letter-spacing: 0.5px;
     }
     .btn {
-      margin: 25px 25px 0px 0px;
       text-transform: uppercase;
     }
   }
@@ -601,6 +679,7 @@ button:focus {
 .grid-wrapper {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
+  grid-row-gap: 20px;
 }
 
 #features {
@@ -723,10 +802,6 @@ button:focus {
   filter: alpha(opacity=90);
 }
 
-.animate-opacity {
-  transition: opacity 0.3s linear;
-}
-
 .opacity-on {
   opacity: 1 !important;
 }
@@ -744,9 +819,19 @@ button:focus {
     }
   }
 }
-#portfolio .mix {
-  @extend .animate-opacity;
+
+.works-list-enter-active, .works-list-leave-active {
+  transition: all .5s ease;
 }
+.works-list-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
+.works-list-enter-from {
+  transform: translateX(-10px);
+  opacity: 0;
+}
+
 .controls {
   text-align: center;
   padding: 0px 0px 20px;
@@ -793,7 +878,7 @@ button:focus {
 .shot-item:hover .overlay {
   opacity: 1;
 }
-.overlay .item-icon {
+.overlay .item-icon i, .overlay .item-icon {
   height: 48px;
   width: 48px;
   line-height: 48px;
@@ -819,7 +904,7 @@ button:focus {
     color: #fff;
   }
 }
-.shot-item:hover .item-icon {
+.shot-item:hover .item-icon i, .shot-item:hover .item-icon {
   visibility: visible;
   opacity: 1;
 }
@@ -1023,7 +1108,7 @@ button:focus {
       background: #1da1f2;
       color: #fff;
     }
-    .google-plus a:hover {
+    .instagram a:hover {
       background: #dd4d42;
       color: #fff;
     }
