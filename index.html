@@ -51,28 +51,28 @@
           <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="navbar-nav mr-auto w-100 justify-content-end">
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#hero-area">Home</a>
+                <a class="nav-link page-scroll" href="#hero-area" data-links="hero-area">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#services">Services</a>
+                <a class="nav-link page-scroll" href="#services" data-links="services">Services</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#features">Features</a>
+                <a class="nav-link page-scroll" href="#features" data-links="features,timeline,progress">Features</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#portfolios">Works</a>
+                <a class="nav-link page-scroll" href="#portfolios" data-links="portfolios">Works</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#pricing">Pricing</a>
+                <a class="nav-link page-scroll" href="#pricing" data-links="pricing">Pricing</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#team">Team</a>
+                <a class="nav-link page-scroll" href="#team" data-links="team">Team</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#blog">Blog</a>
+                <a class="nav-link page-scroll" href="#blog" data-links="blog">Blog</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link page-scroll" href="#contact">Contact</a>
+                <a class="nav-link page-scroll" href="#contact" data-links="contact">Contact</a>
               </li>
             </ul>
           </div>
@@ -344,11 +344,9 @@
     <section id="blog" class="section">
       <!-- Container Starts -->
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Recent Blog</h2>
-          <hr class="lines">
-          <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.</p>
-        </div>
+        <section-header title="Recent Blog">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.
+        </section-header>
         <div class="row">
           <post class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-item" title="How often should you tweet?" :image="images.blog1" days="2" comments="24">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
@@ -434,13 +432,13 @@
                 <a href="#">Homepage</a>
               </li>
               <li>
-                <a href="#">Services</a>
+                <a href="#services">Services</a>
               </li>
               <li>
-                <a href="#">About Us</a>
+                <a href="#team">Team</a>
               </li>
               <li>
-                <a href="#">Contact</a>
+                <a href="#contacts">Contact</a>
               </li>
             </ul>
           </div>

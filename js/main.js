@@ -17,7 +17,7 @@ const scrollSpy = () => {
   }
 
   const targets = document.querySelectorAll("header, .section"),
-    links = mapToAsocciatedObject(targets, id => document.querySelector(`#main-navbar a.nav-link[href='#${id}']`)),
+    links = mapToAsocciatedObject(targets, id => document.querySelector(`#main-navbar [data-links*="${id}"]`)),
     top = document.querySelector("#hero-area > div .contents"),
     navBar = document.querySelector(".scrolling-navbar"),
     backToTop = document.querySelector(".back-to-top"),
@@ -32,7 +32,7 @@ const scrollSpy = () => {
   });
 
   targets.forEach(target => {
-    inView(target, { rootMargin: "50px", threshold: 1 }, entry => {
+    inView(target, { rootMargin: "50px", threshold: 0.95 }, entry => {
       const currentNav = links[entry.target.id];
       if (!currentNav) {
         return;
