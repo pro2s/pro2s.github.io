@@ -62,3 +62,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  @import "../scss/charts.scss";
+
+  @include circle-color("green", #33b391, #61d2b4, #33b391);
+  @include circle-color("yellow", #b3a633, #d2d061, #b1b333);
+  @include circle-color("red", #e7a7a7, #b14c4c, #b33333);
+  @include circle-color("blue",  #a19ff1, #6c61d2, #4b40e2);
+  @include circle-hover(#fff, #fff, gray);
+</style>

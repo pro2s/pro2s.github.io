@@ -1,29 +1,28 @@
 <template>
   <div class="container">
     <div class="row">
-      <counter class="col-sm-6 col-md-3 col-lg-3" icon="timer" target="1234"
-        >Working Hours</counter
-      >
-      <counter class="col-sm-6 col-md-3 col-lg-3" icon="briefcase" target="321"
-        >Completed Projects</counter
-      >
-      <counter class="col-sm-6 col-md-3 col-lg-3" icon="user" target="123"
-        >No. of Clients</counter
-      >
-      <counter class="col-sm-6 col-md-3 col-lg-3" icon="heart" target="4321"
-        >Peoples Love</counter
-      >
+      <Counter class="col-sm-6 col-md-3 col-lg-3"
+        v-for="(counter, key) in counters" :key="key" v-bind="counter">
+        {{ counter.text }}
+      </Counter>
     </div>
   </div>
 </template>
 
 <script>
-import Counter from "../components/Counter.vue";
+import Counter from "../components/Counter.vue"
 
 export default {
-  data: () => ({}),
+  data: () => ({
+    counters: [
+      {icon: "timer", target: 1234, text: "Working Hours"},
+      {icon: "briefcase", target: 321, text: "Completed Projects"},
+      {icon: "user", target: 123, text: "No. of Clients"},
+      {icon: "heart", target: 4321, text: "Peoples Love"},
+    ]
+  }),
   components: {
-    counter: Counter,
+    Counter,
   },
-};
+}
 </script>

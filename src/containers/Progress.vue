@@ -35,3 +35,47 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+@import '../scss/config.scss';
+
+#progress {
+  .section-title {
+    color: #fff;
+  }
+
+  h4 {
+    color: $white;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    line-height: 22px;
+  }
+
+  ul.line-progress {
+
+    > li {
+      color: $green;
+
+      &:hover {
+        &:before {
+          background: $green-drack !important;
+        }
+      }
+
+      &.pass:before {
+        background-color: $green;
+      }
+
+      &:before {
+        background: $white;
+        border: 3px solid $green-drack;
+      }
+    }
+
+    &:before {
+      background: $green;
+    }
+  }
+}
+</style>

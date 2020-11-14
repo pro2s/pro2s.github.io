@@ -43,3 +43,30 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+  @import '../scss/config.scss';
+
+  #timeline {
+    .timeline {
+      &:before {
+        background: $green;
+      }
+      &:after {
+        background: $green-drack;
+      }
+
+      > li {
+        &:hover {
+          &:before {
+            background: $green;
+          }
+        }
+        &:before {
+          background: $white;
+          border: 3px solid $green-drack;
+        }
+      }
+    }
+  }
+</style>

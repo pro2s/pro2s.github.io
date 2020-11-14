@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { fadeOut, mapToAsocciatedObject, toggleClass, inView } from './lib.js'
+
 import './scss/main.scss'
 import './scss/responsive.scss'
 
