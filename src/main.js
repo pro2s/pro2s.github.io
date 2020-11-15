@@ -14,6 +14,7 @@ import Counters from './containers/Counters.vue'
 import Team from './containers/Team.vue'
 import Testimonial from './containers/Testimonial.vue'
 import Blog from './containers/Blog.vue'
+import ContactForm from './containers/ContactForm.vue'
 
 import backgrounds from './backgrounds.js'
 
@@ -72,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
   createApp(Team).mount('#team')
   createApp(Testimonial).mount('#testimonial')
   createApp(Blog).mount('#blog')
+  createApp(ContactForm).mount('#contactForm')
 
   const loader = document.querySelector('#loader')
   fadeOut(loader)
