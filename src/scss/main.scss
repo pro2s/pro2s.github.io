@@ -1126,6 +1126,9 @@ button:focus {
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
+  &:disabled, &[readonly] {
+    background-color: #545a60;
+  }
 }
 .form-control:focus {
   box-shadow: none;
@@ -1134,6 +1137,7 @@ button:focus {
   background: transparent;
   outline: none;
 }
+
 .btn.disabled,
 .btn:disabled {
   opacity: 1;

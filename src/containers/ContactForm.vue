@@ -3,55 +3,51 @@
     <div class="row">
       <div class="col-md-12">
         <div class="form-group">
-          <input
+          <FormInput
+            v-model="fields.name"
+            @clear="clear"
             :readonly="done"
-            v-model="name"
             type="text"
-            class="form-control"
-            id="name"
+            :invalid="invalid['name']"
             name="name"
-            placeholder="Your Name"
-            aria-label="Your Name"
-            required
-            data-error="Please enter your name"
-          />
-          <div class="help-block with-errors"></div>
+            label="Your Name"
+            />
         </div>
       </div>
       <div class="col-md-12">
         <div class="form-group">
-          <input
+          <FormInput
+            v-model="fields.email"
+            @clear="clear"
             :readonly="done"
-            v-model="email"
             type="text"
-            placeholder="Your Email"
-            id="email"
-            class="form-control"
+            :invalid="invalid['email']"
             name="email"
-            aria-label="Your Email"
-            required
-            data-error="Please enter your email"
-          />
-          <div class="help-block with-errors"></div>
+            label="Your Email"
+            />
         </div>
       </div>
       <div class="col-md-12">
         <div class="form-group">
           <textarea
             :readonly="done"
-            v-model="message"
-            class="form-control"
+            v-model="fields.message"
+            @focus="clear('message')"
+            :class="{ 'form-control': true, 'is-invalid': invalid['message'] }"
             id="message"
             placeholder="Your Message"
             aria-label="Your Message"
             rows="8"
-            data-error="Write your message"
-            required
           ></textarea>
-          <div class="help-block with-errors"></div>
+          <div class="help-block with-errors">{{ invalid["message"] }}</div>
         </div>
         <div class="submit-button text-center">
-          <button class="btn btn-common" id="submit" @click="send()" v-show="!done">
+          <button
+            class="btn btn-common"
+            id="submit"
+            @click="send()"
+            v-show="!done"
+          >
             Send Message
           </button>
           <div class="h3 text-center" v-show="done">{{ result }}</div>
@@ -63,38 +59,67 @@
 </template>
 
 <script>
+import { sendForm } from "../api.js"
+import FormInput from '../components/FormInput.vue'
+
+const required = (value, message) => {
+  return !value || value.lenght === 0 ? message : null
+}
+
 export default {
+  components: {
+    FormInput,
+  },
   data: () => ({
     done: false,
     result: null,
-    name: "",
-    email: "",
-    message: "",
+    fields: {
+      name: "",
+      email: "",
+      message: "",
+    },
+    validators: {
+      name: (value) => required(value, "Please enter your name"),
+      email: (value) => required(value, "Please enter your email"),
+      message: (value) => required(value, "Please enter your message"),
+    },
+    invalid: {},
   }),
   methods: {
     ok() {
       this.result = "Thanks"
       this.done = true
     },
-    error() {
-      this.result = "Error"
+    error(error) {
+      this.result = error.message || "Error"
       this.done = true
     },
+    clear(field) {
+      delete this.invalid[field]
+    },
+    validate() {
+      for (const field in this.fields) {
+        this.invalid[field] = this.validators[field](this.fields[field])
+      }
+
+      for (const field in this.invalid) {
+        if (this.invalid[field] !== null) {
+          return false
+        }
+      }
+
+      return true
+    },
     send() {
-      const url = import.meta.env.VITE_API_PATH || "/api/"
-      fetch(url + 'send', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({name: this.name, email: this.email, message: this.message})
-      })
-      .then((response) => {
-        response.status === 200
-          ? this.ok()
-          : this.error()
-      })
-      .catch((error) => this.error())
+      if (!this.validate()) {
+        return
+      }
+
+      sendForm(this.fields)
+        .then((response) => {
+          response.status === 200 ? this.ok() : this.error()
+        })
+        .catch((error) => this.error(error))
     },
   },
 }
