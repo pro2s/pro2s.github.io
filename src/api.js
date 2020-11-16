@@ -1,4 +1,4 @@
-const url = process.env.API_PATH || import.meta.env.VITE_API_PATH || "/api/"
+const url = import.meta.env.VITE_API_PATH || "/api/"
 
 export const sendForm = (data) =>
   fetch(url + 'send', {
