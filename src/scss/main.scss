@@ -1,5 +1,5 @@
 @import './config.scss';
-
+@import 'animate.css/animate.css';
 /*
 * Mate - Bootstrap 4 Template
 * Build Date: December 2017
@@ -17,7 +17,6 @@
     -2.1 SECTION TITLE
     -2.2 BUTTONS
     -2.3 SOCIAL ICON
-    -2.4 PRE LOADER
     -2.5 SCROLL TO UP
   3. HERO AREA
   4. NAVBAR
@@ -290,65 +289,6 @@ button:focus {
 }
 
 /* ==========================================================================
-	 2.4  Pre Loader
-	 ========================================================================== */
-#loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #333;
-  z-index: 9999999999;
-}
-.spinner {
-  width: 40px;
-  height: 40px;
-  top: 45%;
-  position: relative;
-  margin: 0px auto;
-}
-.double-bounce1,
-.double-bounce2 {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: $preset;
-  opacity: 0.6;
-  position: absolute;
-  top: 0;
-  left: 0;
-  -webkit-animation: sk-bounce 2s infinite ease-in-out;
-  animation: sk-bounce 2s infinite ease-in-out;
-}
-.double-bounce2 {
-  -webkit-animation-delay: -1s;
-  animation-delay: -1s;
-}
-
-@-webkit-keyframes sk-bounce {
-  0%,
-  100% {
-    -webkit-transform: scale(0);
-  }
-  50% {
-    -webkit-transform: scale(1);
-  }
-}
-
-@keyframes sk-bounce {
-  0%,
-  100% {
-    transform: scale(0);
-    -webkit-transform: scale(0);
-  }
-  50% {
-    transform: scale(1);
-    -webkit-transform: scale(1);
-  }
-}
-
-/* ==========================================================================
   -2.5 Scroll To Up
    ========================================================================== */
 .back-to-top {
@@ -519,32 +459,18 @@ button:focus {
     width: 100%;
     display: flex;
   }
+  .navbar-nav {
+    display: none;
+  }
+  .top-nav-collapse .navbar-nav {
+    display: block;
+  }
   .navbar-brand {
     padding: 15px;
     top: 0;
     img {
       width: 70%;
     }
-  }
-  #mobile-menu {
-    display: none;
-  }
-
-  .slicknav_menu {
-    display: block;
-  }
-  .slicknav_nav .active a {
-    background: $preset;
-    color: #fff;
-  }
-  .slicknav_nav a:hover,
-  .slicknav_nav .active {
-    color: $preset;
-    background: #f8f9fa;
-  }
-  .slicknav_nav .dropdown li a.active {
-    background: #f8f9fa;
-    color: $preset;
   }
 }
 

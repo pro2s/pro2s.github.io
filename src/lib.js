@@ -50,7 +50,10 @@ export const setOpacity = (selector, opacity) => document.querySelectorAll(selec
 
 
 export const inView = (target, options, action) => {
-  let prev = false;
-  const observer = new IntersectionObserver(entries => entries.forEach(entry => prev = action(entry, prev)), options);
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(entry => action(entry)),
+    options
+  )
+
   observer.observe(target);
 };

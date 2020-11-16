@@ -1,57 +1,47 @@
 <template>
   <form @submit.prevent>
     <div class="row">
+      <FormGroup>
+        <FormInput
+          v-model="fields.name"
+          @clear="clear"
+          :readonly="done"
+          type="text"
+          :invalid="invalid['name']"
+          name="name"
+          label="Your Name"
+          />
+      </FormGroup>
+      <FormGroup>
+        <FormInput
+          v-model="fields.email"
+          @clear="clear"
+          :readonly="done"
+          type="text"
+          :invalid="invalid['email']"
+          name="email"
+          label="Your Email"
+          />
+      </FormGroup>
+      <FormGroup>
+        <textarea
+          :readonly="done"
+          v-model="fields.message"
+          @focus="clear('message')"
+          :class="{ 'form-control': true, 'is-invalid': invalid['message'] }"
+          id="message"
+          placeholder="Your Message"
+          aria-label="Your Message"
+          rows="8">
+        </textarea>
+        <div class="help-block with-errors">{{ invalid["message"] }}</div>
+      </FormGroup>
       <div class="col-md-12">
-        <div class="form-group">
-          <FormInput
-            v-model="fields.name"
-            @clear="clear"
-            :readonly="done"
-            type="text"
-            :invalid="invalid['name']"
-            name="name"
-            label="Your Name"
-            />
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div class="form-group">
-          <FormInput
-            v-model="fields.email"
-            @clear="clear"
-            :readonly="done"
-            type="text"
-            :invalid="invalid['email']"
-            name="email"
-            label="Your Email"
-            />
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div class="form-group">
-          <textarea
-            :readonly="done"
-            v-model="fields.message"
-            @focus="clear('message')"
-            :class="{ 'form-control': true, 'is-invalid': invalid['message'] }"
-            id="message"
-            placeholder="Your Message"
-            aria-label="Your Message"
-            rows="8"
-          ></textarea>
-          <div class="help-block with-errors">{{ invalid["message"] }}</div>
-        </div>
         <div class="submit-button text-center">
-          <button
-            class="btn btn-common"
-            id="submit"
-            @click="send()"
-            v-show="!done"
-          >
+          <button class="btn btn-common" id="submit" @click="send()" v-show="!done">
             Send Message
           </button>
           <div class="h3 text-center" v-show="done">{{ result }}</div>
-          <div class="clearfix"></div>
         </div>
       </div>
     </div>
@@ -59,8 +49,9 @@
 </template>
 
 <script>
-import { sendForm } from "../api.js"
+import FormGroup from '../components/FormGroup.vue'
 import FormInput from '../components/FormInput.vue'
+import { sendForm } from "../api.js"
 
 const required = (value, message) => {
   return !value || value.lenght === 0 ? message : null
@@ -68,6 +59,7 @@ const required = (value, message) => {
 
 export default {
   components: {
+    FormGroup,
     FormInput,
   },
   data: () => ({
@@ -102,6 +94,10 @@ export default {
         this.invalid[field] = this.validators[field](this.fields[field])
       }
 
+      return this.isValid()
+    },
+    isValid()
+    {
       for (const field in this.invalid) {
         if (this.invalid[field] !== null) {
           return false
