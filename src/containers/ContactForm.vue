@@ -83,7 +83,7 @@ export default {
       this.done = true
     },
     error(error) {
-      this.result = error.message || "Error"
+      this.result = (error && error.message) || "Error"
       this.done = true
     },
     clear(field) {
