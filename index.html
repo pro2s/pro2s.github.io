@@ -14,9 +14,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="./scss/main.scss">
-    <link rel="stylesheet" href="./scss/responsive.scss">
-
     <link rel="apple-touch-icon" sizes="57x57" href="./favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="./favicon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="./favicon/apple-icon-72x72.png">
@@ -30,10 +27,67 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="./favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
-    <link rel="manifest" href="./manifest.json">
+    <link rel="manifest" href="/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="./favicon/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+    <style lang="sass">
+      #loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #333;
+        z-index: 9999999999;
+      }
+      .spinner {
+        width: 40px;
+        height: 40px;
+        top: 45%;
+        position: relative;
+        margin: 0px auto;
+      }
+      .double-bounce-one,
+      .double-bounce-two {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: #61d2b4;
+        opacity: 0.6;
+        position: absolute;
+        top: 0;
+        left: 0;
+        -webkit-animation: sk-bounce 2s infinite ease-in-out;
+        animation: sk-bounce 2s infinite ease-in-out;
+      }
+      .double-bounce-two {
+        -webkit-animation-delay: -1s;
+        animation-delay: -1s;
+      }
+
+      @-webkit-keyframes sk-bounce {
+        0%,
+        100% {
+          -webkit-transform: scale(0);
+        }
+        50% {
+          -webkit-transform: scale(1);
+        }
+      }
+
+      @keyframes sk-bounce {
+        0%,
+        100% {
+          transform: scale(0);
+          -webkit-transform: scale(0);
+        }
+        50% {
+          transform: scale(1);
+          -webkit-transform: scale(1);
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- Header Section Start -->
@@ -77,36 +131,6 @@
             </ul>
           </div>
         </div>
-
-        <!-- Mobile Menu Start -->
-        <ul class="mobile-menu">
-           <li>
-              <a class="page-scroll" href="#hero-area">Home</a>
-            </li>
-            <li>
-              <a class="page-scroll" href="#services">Services</a>
-            </li>
-            <li>
-              <a class="page-scroll" href="#features">Features</a>
-            </li>
-            <li>
-              <a class="page-scroll" href="#portfolios">Works</a>
-            </li>
-            <li>
-              <a class="page-scroll" href="#pricing">Pricing</a>
-            </li>
-            <li>
-              <a class="page-scroll" href="#team">Team</a>
-            </li>
-            <li >
-              <a class="page-scroll" href="#blog">Blog</a>
-            </li>
-            <li>
-              <a class="page-scroll" href="#contact">Contact</a>
-            </li>
-        </ul>
-        <!-- Mobile Menu End -->
-
       </nav>
       <!-- Navbar End -->
       <div class="container">
@@ -123,129 +147,15 @@
     </header>
     <!-- Header Section End -->
 
-    <!-- Services Section Start -->
-    <section id="services" class="section">
-      <div class="container">
-        <section-header title="Our Services">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.
-        </section-header>
-        <div class="row">
-          <service class="col-md-4 col-sm-6" title="Content Writing" icon="pencil">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.
-          </service>
-          <service class="col-md-4 col-sm-6" title="Web Development" icon="code">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.
-          </service>
-          <service class="col-md-4 col-sm-6" title="Business Consultancy" icon="consulting">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.
-          </service>
-        </div>
-      </div>
-    </section>
-    <!-- Services Section End -->
+    <section id="services" class="section"></section>
 
-    <!-- Features Section Start -->
-    <section id="features" class="section" data-paralax="0.2">
-      <div class="container">
-        <section-header title="Some Features">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos!<br>
-          Lorem ipsum dolor sit amet, consectetur.
-        </section-header>
-        <div class="row">
-          <div class="col-lg-8 col-md-12 col-xs-12">
-            <div class="container">
-              <div class="row">
-                 <main-skill class="col-lg-6 col-sm-6 col-xs-12 box-item" icon="rocket" title="Bootstrap 4 Based">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                  </main-skill>
-                  <main-skill class="col-lg-6 col-sm-6 col-xs-12 box-item" icon="laptop-phone" title="Fully Responsive">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                  </main-skill>
-                  <main-skill class="col-lg-6 col-sm-6 col-xs-12 box-item" icon="layers" title="Parallax Background">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                  </main-skill>
-                  <main-skill class="col-lg-6 col-sm-6 col-xs-12 box-item" icon="cog" title="Easy to Customize">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                  </main-skill>
-              </div>
-              <div class="row">
-                <skill-list class="col-md-12 box-item grid-wrapper" :skills="skils"></skill-list>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-xs-12">
-            <div class="show-box">
-              <img class="img-fulid" src="img/features/feature.png" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section id="features" class="section" data-paralax="0.2"></section>
 
-    <section id="timeline" class="section">
-      <div class="container">
-        <section-header title="Our Timeline">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.
-        </section-header>
-        <div class="row">
-          <div class="col-md-8 offset-md-2">
-              <timeline class="timeline">
-                <timeline-point title="New Web Design" date="21 March, 2014">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....
-                </timeline-point>
-                <timeline-point title="21 000 Job Seekers" date="4 March, 2014">
-                  Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin...
-                </timeline-point>
-                <timeline-point title="Awesome Employers" date="1 April, 2014">
-                  Fusce ullamcorper ligula sit amet quam accumsan aliquet. Sed nulla odio, tincidunt vitae nunc vitae, mollis pharetra velit. Sed nec tempor nibh...
-                </timeline-point>
-              </timeline>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section id="timeline" class="section"></section>
 
-    <section id="progress" class="counters section" data-paralax="0.35">
-      <div class="container">
-        <section-header title="Languages"></section-header>
-        <div class="row">
-          <line-progress class="col-md-4 col-sm-6" levels="5" passed="3"
-            :labels="['A1','A2','B1','B2','C']">
-            English
-          </line-progress>
-          <line-progress class="col-md-4 col-sm-6" levels="5" passed="5">Russian</line-progress>
-          <line-progress class="col-md-4 col-sm-6" levels="5" passed="2">German</line-progress>
-          <line-progress class="col-md-4 col-sm-6" levels="5" passed="1">Polish</line-progress>
-        </div>
-      </div>
-    </section>
-    <!-- Features Section End -->
+    <section id="progress" class="counters section" data-paralax="0.35"></section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolios" class="section">
-      <div class="container">
-        <section-header title="Our Portfolio">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.
-        </section-header>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="controls text-center">
-              <a v-for="f in filters" :key="f.id" :class="{active: filter == f.id}" class="btn btn-common" @click="setFilter(f.id)">
-                {{ f.name }}
-              </a>
-            </div>
-          </div>
-          <div id="portfolio" class="row">
-            <transition-group name="works-list">
-              <work class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix"
-                v-for="work in worksList" :key="work.id" :image="work.image" :title="work.type">
-              </work>
-            </transition-group>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Portfolio Section Ends -->
+    <section id="portfolios" class="section"></section>
 
     <!-- Start Video promo Section -->
     <section class="video-promo section">
@@ -255,7 +165,7 @@
               <div class="video-promo-content text-center">
                 <h2 class="wow zoomIn">Watch Our Intro video</h2>
                 <p class="wow zoomIn">Aliquam vestibulum cursus felis. In iaculis iaculis sapien ac condimentum. Vestibulum congue posuere lacus, id tincidunt nisi porta sit amet. Suspendisse et sapien varius, pellentesque dui non, semper orci.</p>
-                <a href="https://www.youtube.com/watch?v=IXoMDwh4Cq8" class="video-popup wow fadeInUp"><i class="lni lni-play"></i></a>
+                <a href="https://www.youtube.com/watch?v=zNtqgrKnsCU" class="video-popup wow fadeInUp"><i class="lni lni-play"></i></a>
               </div>
           </div>
         </div>
@@ -263,103 +173,15 @@
     </section>
     <!-- End Video Promo Section -->
 
-    <!-- Start Pricing Table Section -->
-    <div id="pricing" class="section pricing-section">
-      <div class="container">
-        <section-header title="Pricing Table">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.
-        </section-header>
-        <div class="row pricing-tables">
-          <price class="col-md-4 col-sm-6 col-xs-12" title="Free" price="0.0" :options="options" action="Try Now"></price>
-          <price class="col-md-4 col-sm-6 col-xs-12" title="Popular" price="3.99" :options="options" action="Buy Now"></price>
-          <price class="col-md-4 col-sm-6 col-xs-12" title="Premium" price="9.50" :options="options" action="Buy Now"></price>
-        </div>
-      </div>
-    </div>
-    <!-- End Pricing Table Section -->
+    <section id="pricing" class="section pricing-section"></section>
 
-    <!-- Counter Section Start -->
-    <div id="counters" class="counters section" data-paralax="0.5">
-      <div class="container">
-        <div class="row">
-          <counter class="col-sm-6 col-md-3 col-lg-3" icon="timer" target="1234">Working Hours</counter>
-          <counter class="col-sm-6 col-md-3 col-lg-3" icon="briefcase" target="321">Completed Projects</counter>
-          <counter class="col-sm-6 col-md-3 col-lg-3" icon="user" target="123">No. of Clients</counter>
-          <counter class="col-sm-6 col-md-3 col-lg-3" icon="heart" target="4321">Peoples Love</counter>
-        </div>
-      </div>
-    </div>
-    <!-- Counter Section End -->
+    <section id="counters" class="counters section" data-paralax="0.5"></section>
 
-    <!-- Team section Start -->
-    <section id="team" class="section">
-      <div class="container">
-        <section-header title="Our Team">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.
-        </section-header>
-        <div class="row">
-          <member class="col-lg-3 col-md-6 col-xs-12" :photo="photo.team1" name="Jhon Doe" :socials="socials">
-            Chief Technical Officer
-          </member>
-          <member class="col-lg-3 col-md-6 col-xs-12" :photo="photo.team2" name="Paul Kowalsy" :socials="socials">
-            CEO & Co-Founder
-          </member>
-          <member class="col-lg-3 col-md-6 col-xs-12" :photo="photo.team3" name="Emilly Williams" :socials="socials">
-            Business Manager
-          </member>
-          <member class="col-lg-3 col-md-6 col-xs-12" :photo="photo.team4" name="Patricia Green" :socials="socials">
-            Graphic Designer
-          </member>
-        </div>
-      </div>
-    </section>
-    <!-- Team section End -->
+    <section id="team" class="section"></section>
 
-    <!-- testimonial Section Start -->
-    <div id="testimonial" class="section" data-paralax="0.15">
-      <div class="container">
-        <div class="row justify-content-md-center">
-          <div class="col-md-12">
-            <gallery class="touch-slider" :options="options">
-              <testimonial title="Founder of Jalmori" name="Jone Deam" :image="photos.customer1">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. send do <br> adipisicing ciusmod tempor incididunt ut labore et
-              </testimonial>
-              <testimonial title="President Lexo Inc" name="Oidila Matik" :image="photos.customer2">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. send do <br> adipisicing ciusmod tempor incididunt ut labore et
-              </testimonial>
-              <testimonial title="CEO Optima Inc" name="Alex Dattilo" :image="photos.customer3">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. send do <br> adipisicing ciusmod tempor incididunt ut labore et
-              </testimonial>
-              <testimonial title="CEO & Founder" name="Paul Kowalsy" :image="photos.customer4">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. send do <br> adipisicing ciusmod tempor incididunt ut labore et
-              </testimonial>
-            </gallery>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- testimonial Section Start -->
+    <section id="testimonial" class="section" data-paralax="0.15"></section>
 
-    <!-- Blog Section -->
-    <section id="blog" class="section">
-      <!-- Container Starts -->
-      <div class="container">
-        <section-header title="Recent Blog">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos! <br> Lorem ipsum dolor sit amet, consectetur.
-        </section-header>
-        <div class="row">
-          <post class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-item" title="How often should you tweet?" :image="images.blog1" days="2" comments="24">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
-          </post>
-          <post class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-item" title="Content is still king" :image="images.blog2" days="3" comments="14">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
-          </post>
-          <post class="col-lg-4 col-md-4 col-sm-6 col-xs-12 blog-item" title="Social media at work" :image="images.blog3" days="7" comments="42">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
-          </post>
-        </div>
-      </div>
-    </section>
+    <section id="blog" class="section"></section>
     <!-- blog Section End -->
 
     <!-- Contact Section Start -->
@@ -368,52 +190,11 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-6 col-sm-6 col-xs-12">
-              <div class="contact-us">
-                <h3>Contact With Me</h3>
-                <div class="contact-address">
-                  <p>Centerville Road, DE 19808, US </p>
-                  <p class="phone">Phone: <span>(+94 123 456 789)</span></p>
-                  <p class="email">E-mail: <span>(mail@pro2s.ru)</span></p>
-                </div>
-                <div class="social-icons">
-                  <ul class="social-list">
-                    <li class="facebook"><a href="#"><div class="icon"><i class="lni lni-facebook"></i></div></a></li>
-                    <li class="twitter"><a href="#"><div class="icon"><i class="lni lni-twitter"></i></div></a></li>
-                    <li class="linkedin"><a href="#"><div class="icon"><i class="lni lni-linkedin"></i></div></a></li>
-                    <li class="instagram"><a href="#"><div class="icon"><i class="lni lni-instagram"></i></div></a></li></ul>
-                </div>
-              </div>
+              <h3>Contact With Me</h3>
+              <div id="contacts" class="contact-us"></div>
             </div>
             <div class="col-lg-6 col-sm-6 col-xs-12">
-              <div class="contact-block">
-                <form id="contactForm">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                          <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" aria-label="Your Name" required data-error="Please enter your name">
-                        <div class="help-block with-errors"></div>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <input type="text" placeholder="Your Email" id="email" class="form-control" name="email" aria-label="Your Email" required data-error="Please enter your email">
-                        <div class="help-block with-errors"></div>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <textarea class="form-control" id="message" placeholder="Your Message" aria-label="Your Message" rows="8" data-error="Write your message" required></textarea>
-                        <div class="help-block with-errors"></div>
-                      </div>
-                      <div class="submit-button text-center">
-                        <button class="btn btn-common" id="submit" type="submit">Send Message</button>
-                        <div id="msgSubmit" class="h3 text-center hidden"></div>
-                        <div class="clearfix"></div>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
+              <div class="contact-block" id="contactForm"></div>
             </div>
           </div>
         </div>
@@ -438,13 +219,13 @@
                 <a href="#team">Team</a>
               </li>
               <li>
-                <a href="#contacts">Contact</a>
+                <a href="#contact">Contact</a>
               </li>
             </ul>
           </div>
           <div class="col-lg-6 col-sm-6 col-xs-12">
             <div class="copyright">
-              <p>Designed & Developed by <a rel="nofollow" href="https://uideck.com">UIdeck</a></p>
+              <p>Designed by <a rel="nofollow" href="https://uideck.com">UIdeck</a></p>
             </div>
           </div>
         </div>
@@ -459,11 +240,11 @@
 
     <div id="loader">
       <div class="spinner">
-        <div class="double-bounce1"></div>
-        <div class="double-bounce2"></div>
+        <div class="double-bounce-one"></div>
+        <div class="double-bounce-two"></div>
       </div>
     </div>
 
-    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>

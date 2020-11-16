@@ -2,3 +2,4 @@
 node_modules/
 dist/
 parcel-bundle-reports/
+.env
