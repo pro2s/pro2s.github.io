@@ -16,7 +16,7 @@ jobs:
       - name: Install and Build 🔧
         run: |
           yarn install
-          yarn build
+          yarn build --assetsDir=assets
         env:
           VITE_API_PATH: ${{ secrets.API_PATH }}
 
