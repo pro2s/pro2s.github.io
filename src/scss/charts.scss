@@ -1,26 +1,6 @@
-$default: (
-  svgSize: 60px,
-  strokeWidth: 2px,
-  labelFontSize: 1rem,
-  duration: 1s,
-  animationDelay: 1s
-);
-
-$configs: (
-  x95: map-merge($default, (percentage: 95)),
-  x90: map-merge($default, (percentage: 90)),
-  x85: map-merge($default, (percentage: 85)),
-  x80: map-merge($default, (percentage: 80)),
-  x75: map-merge($default, (percentage: 75)),
-  x70: map-merge($default, (percentage: 70)),
-);
-
-/* ------- DO NOT EDIT BELOW --------- */
-$pi: 3.14;
-$labelData: '';
-@for $i from 0 to 101 {
-  $labelData: $labelData + $i + '%' + '\a';
-}
+$labelFontSize: 1rem;
+$duration: 1s;
+$animationDelay: 1s;
 
 @mixin circle-color($name, $label, $foreground, $background) {
   .circle {
@@ -72,24 +52,20 @@ $labelData: '';
   }
 }
 
-@each $chart, $param in $configs {
-  $c: (map-get($param, svgSize) - map-get($param, strokeWidth)) * $pi;
-  $cOffSet: (map-get($param, percentage)/100)*$c;
-
-  .#{$chart} {
-    width: map-get($param, svgSize);
-    height: map-get($param, svgSize);
+.circle {
     margin: 0;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &.animate {
       svg .circle-foreground {
-        animation: offset map-get($param, duration) ease-in-out forwards;
-        animation-delay: map-get($param, animationDelay);
+        animation: offset $duration ease-in-out forwards;
+        animation-delay: $animationDelay;
       }
       figcaption:after {
-        animation: #{$chart}-label map-get($param, duration) steps(map-get($param, percentage)) forwards;
-        animation-delay: map-get($param, animationDelay);
+        animation-delay: $animationDelay;
       }
     }
 
@@ -115,23 +91,17 @@ $labelData: '';
       height: 100%;
       text {
         fill: gray;
-        font-size: map-get($param, labelFontSize)*0.75;
+        font-size: $labelFontSize*0.7;
         transition: all 0.2s linear;
       }
       .circle-background {
         transition: all 0.2s linear;
-        r: (map-get($param, svgSize) - map-get($param, strokeWidth))/2;
-        cx: 50%;
-        cy: 50%;
         fill: none;
         stroke: darkgrey;
-        stroke-width: map-get($param, strokeWidth);
       }
       .circle-foreground {
         @extend .circle-background;
         stroke: lightgrey;
-        stroke-dasharray: $cOffSet $c;
-        stroke-dashoffset: $cOffSet;
         stroke-linecap: round;
         transform-origin: 50% 50%;
         transform: rotate(-90deg);
@@ -143,29 +113,17 @@ $labelData: '';
       pointer-events: none;
       display: inline-block;
       width: 100%;
-      height: map-get($param, labelFontSize);
+      height: $labelFontSize;
       overflow: hidden;
       text-align: center;
       color: gray;
       position: absolute;
-      top: calc(40% - #{map-get($param, labelFontSize)/2});
-      left: 0;
-      font-size: 0;
-      &:after {
-        display: inline-block;
-        content: $labelData;
-        white-space: pre;
-        font-size: map-get($param, labelFontSize);
-        font-weight: bold;
-        line-height: map-get($param, labelFontSize);
-      }
+      font-size: $labelFontSize;
+      line-height: $labelFontSize;
+      white-space: pre;
+      font-weight: bold;
+      margin-bottom: 1rem;
     }
-  }
-  @keyframes #{$chart}-label {
-    100% {
-      transform: translateY(map-get($param, labelFontSize) * (-(map-get($param, percentage))));
-    }
-  }
 }
 
 @keyframes offset {

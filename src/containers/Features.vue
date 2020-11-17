@@ -43,16 +43,16 @@ import SectionHeader from '../components/SectionHeader.vue';
 export default {
   data: () => ({
     skils: [
-      {label: "PHP", class: "x95 green"},
-      {label: "JS", class: "x95 green"},
-      {label: "HTML", class: "x95"},
-      {label: "CSS", class: "x80"},
-      {label: "Laravel" , class: "x85 yellow"},
-      {label: "Symfony", class: "x85 yellow"},
-      {label: "React" , class: "x75 blue"},
-      {label: "Vue", class: "x75 blue"},
-      {label: "MySQL" , class: "x80 red"},
-      {label: "Docker", class: "x80 red"},
+      {label: "PHP", percent: 95, class: "green"},
+      {label: "JS", percent: 95, class: "green"},
+      {label: "HTML", percent: 95},
+      {label: "CSS", percent: 80},
+      {label: "Laravel" , percent: 85, class: "yellow"},
+      {label: "Symfony", percent: 85, class: "yellow"},
+      {label: "React" , percent: 75, class: "blue"},
+      {label: "Vue", percent: 75, class: "blue"},
+      {label: "MySQL" , percent: 80, class: "red"},
+      {label: "Docker", percent: 80, class: "red"},
     ]
   }),
   components: {
