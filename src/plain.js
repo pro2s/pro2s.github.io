@@ -8,7 +8,7 @@ const scrollSpy = () => {
 
   const targets = document.querySelectorAll("header, .section"),
     links = mapToAsocciatedObject(targets, id => document.querySelector(`#main-navbar [data-links*="${id}"]`)),
-    top = document.querySelector("#hero-area > div .contents"),
+    top = document.querySelector("#about > div .contents"),
     navBar = document.querySelector(".scrolling-navbar"),
     backToTop = document.querySelector(".back-to-top"),
     navbarBrand = document.querySelector(".navbar-brand"),

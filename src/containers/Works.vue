@@ -8,11 +8,10 @@
     <div class="row">
       <div class="col-md-12">
         <div class="controls text-center">
-          <a class="btn btn-common"
-            v-for="filter in filters"
+          <a v-for="filter in filters"
             :key="filter.id"
-            :class="{ active: filter === filter.id }"
-            @click="setFilter(filter.id)"
+            :class="[{ active: isActive(filter) }, 'btn', 'btn-common']"
+            @click="setFilter(filter)"
           >
             {{ filter.name }}
           </a>
@@ -56,7 +55,10 @@ export default {
   },
   methods: {
     setFilter(filter) {
-      this.filter = filter;
+      this.filter = filter.id;
+    },
+    isActive(filter) {
+      return this.filter === filter.id;
     },
   },
   computed: {

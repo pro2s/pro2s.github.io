@@ -1,0 +1,48 @@
+{
+  "links": [
+    {
+      "link": "#about",
+      "links": "about",
+      "name": "Home",
+      "footer": true
+    },
+    {
+      "link": "#services",
+      "links": "services",
+      "name": "Services"
+    },
+    {
+      "link": "#features",
+      "links": "features,timeline,progress",
+      "name": "Features",
+      "footer": true
+    },
+    {
+      "link": "#works",
+      "links": "works",
+      "name": "Works"
+    },
+    {
+      "link": "#pricing",
+      "links": "pricing",
+      "name": "Pricing",
+      "footer": true
+    },
+    {
+      "link": "#team",
+      "links": "team",
+      "name": "Team",
+      "footer": true
+    },
+    {
+      "link": "#blog",
+      "links": "blog",
+      "name": "Blog"
+    },
+    {
+      "link": "#contact",
+      "links": "contact",
+      "name": "Contact"
+    }
+  ]
+}

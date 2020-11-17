@@ -317,8 +317,8 @@ button:focus {
 /* ==========================================================================
    3. Hero Area
    ========================================================================== */
-#hero-area {
-  background: url(/img/hero-area.jpg) fixed no-repeat;
+#about {
+  background: url(/img/slider/bg-7.jpg) fixed no-repeat;
   background-size: cover;
   color: #fff;
   overflow: hidden;
@@ -648,7 +648,7 @@ button:focus {
 /* ==========================================================================
   8. Portfolio Section
    ========================================================================== */
-#portfolios {
+#works {
   .mix {
     padding: 10px;
   }
@@ -800,7 +800,7 @@ button:focus {
  10. Counter Section Style
  ========================================================================== */
 .counters {
-  background: url(/img/counter.jpg) fixed;
+  background: url(/img/slider/bg-8.jpg) fixed;
   position: relative;
   .facts-item {
     text-align: center;
