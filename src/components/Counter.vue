@@ -4,7 +4,7 @@
       <Icon :icon="icon" />
       <div class="fact-count" v-in-view="startCount">
         <h3>
-          <span class="counter">{{ counter }}</span>
+          <span class="counter"><AnimatedNumber :target="counter" duration="1000"/></span>
         </h3>
         <h4><slot /></h4>
       </div>
@@ -13,46 +13,29 @@
 </template>
 
 <script>
+import AnimatedNumber from "./AnimatedNumber.vue"
 import Icon from "./Icon.vue";
 import inView from "../directives/inView.js";
 
 export default {
   props: ["icon", "target"],
   data: () => ({
-    duration: 1000,
-    started: undefined,
     counter: 0,
   }),
   components: {
     Icon,
+    AnimatedNumber
   },
   directives: {
     "in-view": inView,
   },
   methods: {
-    count(timestamp) {
-      if (!this.started) {
-        this.started = timestamp;
-      }
-
-      const progress = (timestamp - this.started) / this.duration;
-      this.counter = Math.trunc(this.target * progress);
-
-      if (this.counter < this.target) {
-        requestAnimationFrame(this.count);
-      } else {
-        this.counter = this.target;
-      }
-    },
     startCount(viewed) {
-      if (!viewed || this.started) {
+      if (!viewed) {
         return;
       }
 
-      const to = parseInt(this.target, 10);
-      if (!isNaN(to)) {
-        requestAnimationFrame(this.count);
-      }
+      this.counter = this.target;
     },
   },
 };

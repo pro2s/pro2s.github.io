@@ -51,7 +51,6 @@ $animationDelay: 1s;
     }
   }
 }
-
 .circle {
     margin: 0;
     position: relative;
@@ -60,12 +59,11 @@ $animationDelay: 1s;
     align-items: center;
 
     &.animate {
+      --delay: $animationDelay;
+      --duration: $duration;
       svg .circle-foreground {
-        animation: offset $duration ease-in-out forwards;
-        animation-delay: $animationDelay;
-      }
-      figcaption:after {
-        animation-delay: $animationDelay;
+        animation: offset var(--duration) ease-in-out forwards;
+        animation-delay: var(--delay);
       }
     }
 
@@ -91,7 +89,7 @@ $animationDelay: 1s;
       height: 100%;
       text {
         fill: gray;
-        font-size: $labelFontSize*0.7;
+        font-size: $labelFontSize*0.65;
         transition: all 0.2s linear;
       }
       .circle-background {
