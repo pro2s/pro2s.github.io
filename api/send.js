@@ -7,7 +7,7 @@ const sendToTelegram = (text) => axios.get(
 
 module.exports = async (req, res) => {
   if (req.method === 'OPTIONS') {
-    res.sendStatus(200);
+    return res.status(200).send();
   }
 
   const { name, email, message } = req.body || {}
