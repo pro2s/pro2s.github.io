@@ -1,6 +1,6 @@
 import demo from './assets/demo.json'
 import init from './plain.js'
-import { createApp } from 'vue'
+import { createApp, reactive } from 'vue'
 
 import './scss/main.scss'
 import './scss/responsive.scss'
@@ -21,20 +21,23 @@ import Blog from './containers/Blog.vue'
 import Contact from './containers/Contact.vue'
 import Footer from './containers/Footer.vue'
 
-createApp(Nav).provide('links', demo.links).mount('#navigation')
-createApp(About).mount('#info')
-createApp(Services).mount('#services')
-createApp(Features).mount('#features')
-createApp(Timeline).mount("#timeline")
-createApp(Progress).mount("#progress")
-createApp(Works).mount("#works")
-createApp(Video).mount("#video")
-createApp(Pricing).mount('#pricing')
-createApp(Counters).mount('#counters')
-createApp(Team).mount('#team')
-createApp(Testimonial).mount('#testimonial')
-createApp(Blog).mount('#blog')
-createApp(Contact).mount('#contact')
-createApp(Footer).provide('links', demo.links).mount('#footer')
+const data = reactive(demo);
+const create = (Component, mountTo) => createApp(Component).provide('data', data).mount(mountTo)
+
+create(Nav, '#navigation')
+create(About, '#info')
+create(Services, '#services')
+create(Features, '#features')
+create(Timeline, '#timeline')
+create(Progress, "#progress")
+create(Works, "#works")
+create(Video, "#video")
+create(Pricing, '#pricing')
+create(Counters, '#counters')
+create(Team, '#team')
+create(Testimonial, '#testimonial')
+create(Blog, '#blog')
+create(Contact, '#contact')
+create(Footer, '#footer')
 
 init()

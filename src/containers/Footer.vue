@@ -4,7 +4,7 @@
       <!-- Footer Links -->
       <div class="col-lg-6 col-sm-6 col-xs-12">
         <ul class="footer-links">
-          <li v-for="link in links.filter(l => l.footer)" :key="link.link">
+          <li v-for="link in data.links.filter(l => l.footer)" :key="link.link">
             <a :href="link.link">{{ link.name }}</a>
           </li>
         </ul>
@@ -22,6 +22,6 @@
 
 <script>
 export default {
-  inject: ["links"],
+  inject: ["data"],
 };
 </script>

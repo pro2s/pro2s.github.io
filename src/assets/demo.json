@@ -1,4 +1,7 @@
 {
+  "title": "PRO2S",
+  "name": "Pro2s - Web developer",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   "links": [
     {
       "link": "#about",
@@ -44,5 +47,64 @@
       "links": "contact",
       "name": "Contact"
     }
-  ]
+  ],
+  "services": {
+    "title": "Our Services",
+    "description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos!\n Lorem ipsum dolor sit amet, consectetur.",
+    "items": [
+      {
+        "title": "Content Writing",
+        "icon": "pencil",
+        "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut."
+      },
+      {
+        "title": "Web Development",
+        "icon": "code",
+        "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut."
+      },
+      {
+        "title": "Business Consultancy",
+        "icon": "consulting",
+        "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut."
+      }
+    ]
+  },
+  "features": {
+    "title": "Some Features",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos!\n Lorem ipsum dolor sit amet, consectetur.",
+    "items": [
+      {
+        "title": "Bootstrap 4 Based",
+        "icon": "rocket",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      },
+      {
+        "title": "Fully Responsive",
+        "icon": "laptop-phone",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      },
+      {
+        "title": "Parallax Background",
+        "icon": "layers",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      },
+      {
+        "title": "Easy to Customize",
+        "icon": "cog",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      }
+    ],
+    "skils": [
+      {"label": "PHP", "percent": 95, "class": "green"},
+      {"label": "JS", "percent": 95, "class": "green"},
+      {"label": "HTML", "percent": 95},
+      {"label": "CSS", "percent": 80},
+      {"label": "Laravel" , "percent": 85, "class": "yellow"},
+      {"label": "Symfony", "percent": 85, "class": "yellow"},
+      {"label": "React" , "percent": 75, "class": "blue"},
+      {"label": "Vue", "percent": 75, "class": "blue"},
+      {"label": "MySQL" , "percent": 80, "class": "red"},
+      {"label": "Docker", "percent": 80, "class": "red"}
+    ]
+  }
 }
