@@ -1,8 +1,7 @@
 <template>
   <div class="container">
-    <section-header title="Some Features">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos!<br>
-      Lorem ipsum dolor sit amet, consectetur.
+    <section-header :title="data.features.title">
+      <multi-line :text="data.features.description"/>
     </section-header>
     <div class="row">
       <div class="col-lg-8 col-md-12 col-xs-12">
@@ -34,10 +33,12 @@
 import SkillList from '../components/SkillList.vue';
 import MainSkill from '../components/MainSkill.vue';
 import SectionHeader from '../components/SectionHeader.vue';
+import MultiLine from '../components/MultiLine.vue';
 
 export default {
   inject: ["data"],
   components: {
+    'multi-line': MultiLine,
     'skill-list': SkillList,
     'main-skill': MainSkill,
     'section-header': SectionHeader,

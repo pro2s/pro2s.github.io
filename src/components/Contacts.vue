@@ -16,25 +16,12 @@
 </template>
 
 <script>
-import Icon from "../components/Icon.vue"
+import Icon from "./Icon.vue"
 
 export default {
+  props: ["contact", "socials"],
   components: {
     Icon,
   },
-  props: ["title"],
-  data: () => ({
-    contact: {
-      address: "Centerville Road, DE 19808, US",
-      phone: "+1 234 567 890",
-      email: "mail@pro2s.ru",
-    },
-    socials: [
-      {name: "facebook"},
-      {name: "twitter"},
-      {name: "linkedin"},
-      {name: "instagram"},
-    ]
-  })
 }
 </script>

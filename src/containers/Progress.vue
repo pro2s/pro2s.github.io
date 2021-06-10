@@ -1,23 +1,14 @@
 <template>
   <div class="container">
-    <section-header title="Languages"></section-header>
+    <section-header :title="data.progress.title"></section-header>
     <div class="row">
-      <line-progress
-        class="col-md-4 col-sm-6"
-        levels="5"
-        passed="3"
-        :labels="['A1', 'A2', 'B1', 'B2', 'C']"
+      <line-progress class="col-md-4 col-sm-6"
+        v-for="item in data.progress.items" :key="item.text"
+        :levels="item.levels"
+        :passed="item.passed"
+        :labels="item.labels || []"
       >
-        English
-      </line-progress>
-      <line-progress class="col-md-4 col-sm-6" levels="5" passed="5">
-        Russian
-      </line-progress>
-      <line-progress class="col-md-4 col-sm-6" levels="5" passed="2">
-        German
-      </line-progress>
-      <line-progress class="col-md-4 col-sm-6" levels="5" passed="1">
-        Polish
+        {{ item.text }}
       </line-progress>
     </div>
   </div>
@@ -28,7 +19,7 @@ import SectionHeader from "../components/SectionHeader.vue"
 import LineProgress from "../components/LineProgress.vue"
 
 export default {
-  data: () => ({}),
+  inject: ["data"],
   components: {
     "section-header": SectionHeader,
     "line-progress": LineProgress,

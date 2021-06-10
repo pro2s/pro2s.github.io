@@ -34,9 +34,11 @@ create(Works, "#works")
 create(Video, "#video")
 create(Pricing, '#pricing')
 create(Counters, '#counters')
+
 create(Team, '#team')
 create(Testimonial, '#testimonial')
 create(Blog, '#blog')
+
 create(Contact, '#contact')
 create(Footer, '#footer')
 

@@ -1,14 +1,12 @@
 <template>
   <div class="container">
-    <SectionHeader title="Our Portfolio">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat,
-      dignissimos! <br />
-      Lorem ipsum dolor sit amet, consectetur.
+    <SectionHeader :title="data.works.title">
+      <multi-line :text="data.works.description" />
     </SectionHeader>
     <div class="row">
       <div class="col-md-12">
         <div class="controls text-center">
-          <a v-for="filter in filters"
+          <a v-for="filter in data.works.filters"
             :key="filter.id"
             :class="[{ active: isActive(filter) }, 'btn', 'btn-common']"
             @click="setFilter(filter)"
@@ -30,28 +28,17 @@
 <script>
 import Work from "../components/Work.vue"
 import SectionHeader from "../components/SectionHeader.vue"
+import MultiLine from '../components/MultiLine.vue';
 
 export default {
+  inject: ["data"],
   data: () => ({
     filter: "*",
-    filters: [
-      { id: "*", name: "All" },
-      { id: "development", name: "Development" },
-      { id: "design", name: "Design" },
-      { id: "print", name: "Print" },
-    ],
-    works: [
-      { id: 1, type: "development print", image: "/img/portfolio/img1.jpg"},
-      { id: 2, type: "design print", image: "/img/portfolio/img2.jpg" },
-      { id: 3, type: "development", image: "/img/portfolio/img3.jpg" },
-      { id: 4, type: "development design", image: "/img/portfolio/img4.jpg" },
-      { id: 5, type: "development", image: "/img/portfolio/img5.jpg" },
-      { id: 6, type: "print design", image: "/img/portfolio/img6.jpg" },
-    ],
   }),
   components: {
     Work,
     SectionHeader,
+    MultiLine,
   },
   methods: {
     setFilter(filter) {
@@ -64,8 +51,8 @@ export default {
   computed: {
     worksList() {
       return this.filter === "*"
-        ? this.works
-        : this.works.filter((w) => w.type.includes(this.filter));
+        ? this.data.works.works
+        : this.data.works.works.filter((w) => w.type.includes(this.filter));
     },
   },
 }

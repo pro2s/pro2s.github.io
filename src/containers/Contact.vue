@@ -3,8 +3,8 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 col-sm-6 col-xs-12 contact-us">
-          <h3>Contact With Me</h3>
-          <Contacts/>
+          <h3>{{ data.contacts.title }}</h3>
+          <Contacts :contact="data.contacts.contact" :socials="data.contacts.socials"/>
         </div>
         <div class="col-lg-6 col-sm-6 col-xs-12 contact-block">
           <ContactForm/>
@@ -15,10 +15,11 @@
 </template>
 
 <script>
-import Contacts from './Contacts.vue'
+import Contacts from '../components/Contacts.vue'
 import ContactForm from './ContactForm.vue'
 
 export default {
+  inject: ["data"],
   components: {
     Contacts,
     ContactForm

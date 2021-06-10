@@ -106,5 +106,135 @@
       {"label": "MySQL" , "percent": 80, "class": "red"},
       {"label": "Docker", "percent": 80, "class": "red"}
     ]
+  },
+  "timeline": {
+    "title":"Our Timeline",
+    "description":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos!\nLorem ipsum dolor sit amet, consectetur.",
+    "points": [
+      {
+        "title": "New Web Design",
+        "date": "21 March, 2014",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula...."
+      },
+      {
+        "title": "21 000 Job Seekers",
+        "date": "4 March, 2014",
+        "text": "Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin..."
+      },
+      {
+        "title": "Awesome Employers",
+        "date": "1 April, 2014",
+        "text": "Fusce ullamcorper ligula sit amet quam accumsan aliquet. Sed nullaodio, tincidunt vitae nunc vitae, mollis pharetra velit. Sed nec tempor nibh..."
+      }
+    ]
+  },
+  "progress": {
+    "title": "Languages",
+    "items": [
+      {
+        "levels": 5,
+        "passed": 3,
+        "labels": ["A1", "A2", "B1", "B2", "C"],
+        "text": "English"
+      },
+      {
+        "levels": 5,
+        "passed": 5,
+        "text": "Russian"
+      },
+      {
+        "levels": 5,
+        "passed": 2,
+        "text": "German"
+      },
+      {
+        "levels": 5,
+        "passed": 1,
+        "text": "Polish"
+      }
+    ]
+  },
+  "works": {
+    "title":"Our Portfolio",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos!\nLorem ipsum dolor sit amet, consectetur.",
+    "filters": [
+      {"id": "*", "name": "All" },
+      {"id": "development", "name": "Development"},
+      {"id": "design", "name": "Design"},
+      {"id": "print", "name": "Print"}
+    ],
+    "works": [
+      {"id": 1, "type": "development print", "image": "/img/portfolio/img1.jpg"},
+      {"id": 2, "type": "design print", "image": "/img/portfolio/img2.jpg" },
+      {"id": 3, "type": "development", "image": "/img/portfolio/img3.jpg" },
+      {"id": 4, "type": "development design", "image": "/img/portfolio/img4.jpg"},
+      {"id": 5, "type": "development", "image": "/img/portfolio/img5.jpg"},
+      {"id": 6, "type": "print design", "image": "/img/portfolio/img6.jpg"}
+    ]
+  },
+  "video": {
+    "title": "Watch Our Intro video",
+    "description": "Aliquam vestibulum cursus felis. In iaculis iaculis sapien ac\ncondimentum. Vestibulum congue posuere lacus, id tincidunt nisi\nporta sit amet. Suspendisse et sapien varius, pellentesque dui non,\nsemper orci.",
+    "url": "https://youtu.be/zNtqgrKnsCU",
+    "src": "http://www.youtube.com/embed/zNtqgrKnsCU?autoplay=1&loop=1"
+  },
+  "prices": {
+    "title": "Pricing Table",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, dignissimos!\nLorem ipsum dolor sit amet, consectetur.",
+    "prices": [
+      {
+        "title": "Free",
+        "price": "0.0",
+        "options": [
+          "Consectetur adipiscing",
+          "Nunc luctus nulla et tellus",
+          "Suspendisse quis metus",
+          "Vestibul varius fermentum erat"
+        ],
+        "action": "Try Now"
+      },
+      {
+        "title": "Popular",
+        "price": "3.99",
+        "options": [
+          "Consectetur adipiscing",
+          "Nunc luctus nulla et tellus",
+          "Suspendisse quis metus",
+          "Vestibul varius fermentum erat"
+        ],
+        "action": "Buy Now"
+      },
+      {
+        "title": "Premium",
+        "price": "9.50",
+        "options": [
+          "Consectetur adipiscing",
+          "Nunc luctus nulla et tellus",
+          "Suspendisse quis metus",
+          "Vestibul varius fermentum erat"
+        ],
+        "action": "Buy Now"
+      }
+    ]
+  },
+  "counters": [
+      {"icon": "timer", "target": 1234, "text": "Working Hours"},
+      {"icon": "briefcase", "target": 321, "text": "Completed Projects"},
+      {"icon": "user", "target": 123, "text": "No. of Clients"},
+      {"icon": "heart", "target": 4321, "text": "Peoples Love"}
+  ],
+  "contacts": {
+    "title": "Contact With Me",
+    "contact": {
+      "address": "Centerville Road, DE 19808, US",
+      "phone": "+1 234 567 890",
+      "email": "mail@pro2s.ru"
+    },
+    "socials": [
+      {"name": "facebook", "url": ""},
+      {"name": "twitter", "url": ""},
+      {"name": "linkedin", "url": ""},
+      {"name": "instagram", "url": ""}
+    ]
   }
 }
