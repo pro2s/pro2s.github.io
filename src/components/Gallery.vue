@@ -10,7 +10,7 @@ import Flickity from "flickity"
 export default {
   props: ["options"],
   mounted() {
-    this.init();
+    this.$nextTick(() => this.init());
   },
   beforeUnmount() {
     this.flickity.destroy()
@@ -19,7 +19,6 @@ export default {
   methods: {
     init() {
       this.flickity = new Flickity(this.$el, this.options);
-      this.$emit('init', this.flickity);
     },
   }
 }
