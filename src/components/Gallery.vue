@@ -1,5 +1,5 @@
 <template>
-  <div @touchstart="touchStart" @touchmove="touchMove">
+  <div @touchstart="touchStart" @touchmove="touchMove"  @transitionstart="() => onTransition(1)" @transitionend="() => onTransition(-1)">
     <div class="left" @click="prev">
       <Icon icon="chevron-left" />
     </div>
@@ -33,10 +33,13 @@ export default {
       slides: [],
       count: 2,
       direction: '',
-      disabled: false,
+      transitions: 0,
       x: null,
   }),
   methods: {
+    onTransition(step) {
+      this.transitions += step;
+    },
     touchStart(e) {
       const [firstTouch,] = e.touches;
       this.x = firstTouch.clientX;
@@ -58,7 +61,7 @@ export default {
         this.x = null;
     },
     next() {
-      if (this.disabled) {
+      if ( this.transitions > 0 ) {
         return;
       }
       const firstSlide = this.slides.shift();
@@ -66,7 +69,7 @@ export default {
       this.direction = 'next';
     },
     prev() {
-      if (this.disabled) {
+      if ( this.transitions > 0 ) {
         return;
       }
       const lastSlide = this.slides.pop();
