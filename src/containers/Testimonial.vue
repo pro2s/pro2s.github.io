@@ -2,7 +2,7 @@
   <div class="container">
         <div class="row justify-content-md-center">
           <div class="col-md-12">
-            <gallery class="touch-slider" :options="options">
+            <gallery :options="options">
               <testimonial title="Founder of Jalmori" name="Jone Deam" :image="photos.customer1">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. send do <br> adipisicing ciusmod tempor incididunt ut labore et
               </testimonial>
@@ -45,7 +45,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-  @import "flickity/css/flickity.css";
-</style>

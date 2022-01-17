@@ -16,3 +16,7 @@ export default {
   props: ["image", "name", "title"],
 };
 </script>
+
+<style lang="scss" scoped>
+
+</style>
